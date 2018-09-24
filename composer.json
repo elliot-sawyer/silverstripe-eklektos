@@ -50,12 +50,12 @@
     "scripts": {
         "post-update-cmd": [
             "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && npm run build",
+            "cd themes/silverstripe-bootstarter && npm install && gulp build",
             "composer vendor-expose"
         ],
         "post-install-cmd": [
             "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && npm run build",
+            "cd themes/silverstripe-bootstarter && npm install && gulp build",
             "composer vendor-expose"
         ]
     }
