@@ -4,9 +4,9 @@
     "description": "The SilverStripe Framework Installer",
     "require": {
         "php": ">=5.6.0",
-        "silverstripe/recipe-plugin": "^1",
-        "silverstripe/recipe-cms": "1.1.1@stable",
-        "soulroll/silverstripe-reactstarter": "dev-master"
+        "silverstripe/recipe-plugin": "^1.2",
+        "silverstripe/recipe-cms": "4.2.1@stable",
+        "soulroll/silverstripe-bootstarter": "dev-master"
     },
     "repositories": [
         {
@@ -19,16 +19,20 @@
         "phpunit/phpunit": "^5.7"
     },
     "extra": {
-        "branch-alias": {
-            "4.x-dev": "4.2.x-dev",
-            "dev-master": "5.x-dev"
-        },
+        "project-files": [
+            "app/_config/*",
+            ".env.example"
+        ],
+        "public-files": [
+            "assets/*",
+            "favicon.ico"
+        ],
         "project-files-installed": [
-            "mysite/.htaccess",
-            "mysite/_config.php",
-            "mysite/_config/mysite.yml",
-            "mysite/code/Page.php",
-            "mysite/code/PageController.php"
+            "app/.htaccess",
+            "app/_config.php",
+            "app/_config/mysite.yml",
+            "app/src/Page.php",
+            "app/src/PageController.php"
         ],
         "public-files-installed": [
             ".htaccess",
@@ -39,7 +43,10 @@
         ]
     },
     "config": {
-        "process-timeout": 600
+        "process-timeout": 600,
+        "platform": {
+
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
