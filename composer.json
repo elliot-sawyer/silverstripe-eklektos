@@ -43,22 +43,19 @@
         ]
     },
     "config": {
-        "process-timeout": 600,
-        "platform": {
-
-        }
+        "process-timeout": 600
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
     "scripts": {
         "post-update-cmd": [
             "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && gulp build",
+            "cd themes/silverstripe-bootstarter && npm install && npm run build",
             "composer vendor-expose"
         ],
         "post-install-cmd": [
             "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && gulp build",
+            "cd themes/silverstripe-bootstarter && npm install && npm run build",
             "composer vendor-expose"
         ]
     }
