@@ -4,5 +4,6 @@ Name: mytheme
 SilverStripe\View\SSViewer:
   themes:
     - '$public'
-    - 'simple'
+    - 'silverstripe-bootstarter'
     - '$default'
+  rewrite_hash_links: false

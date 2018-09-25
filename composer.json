@@ -50,11 +50,13 @@
     "scripts": {
         "post-update-cmd": [
             "# Update frontend changes",
+	    "chmod 755 -R public/assets",
             "cd themes/silverstripe-bootstarter && npm install && gulp build",
             "composer vendor-expose"
         ],
         "post-install-cmd": [
             "# Update frontend changes",
+	    "chmod 755 -R public/assets",
             "cd themes/silverstripe-bootstarter && npm install && gulp build",
             "composer vendor-expose"
         ]
