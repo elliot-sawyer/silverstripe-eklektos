@@ -9,7 +9,9 @@
         "soulroll/silverstripe-bootstarter": "dev-master",
         "dnadesign/silverstripe-elemental": "3.0.x-dev",
         "dnadesign/silverstripe-elemental-userforms": "^2.0",
-        "dnadesign/silverstripe-elemental-list": "^1.1"
+        "dnadesign/silverstripe-elemental-list": "^1.1",
+        "silverstripe/elemental-fileblock": "1.x-dev",
+        "silverstripe/userforms": "^5.2"
     },
     "repositories": [
         {
