@@ -9,7 +9,10 @@
           Accordions<br/>
           Cards<br/>
           Responsive images<br/>
-          Responsive tables
+          Responsive tables<br/>
+          Alert messages<br/>
+          Page sharing<br/>
+          Page section colours<br/>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <h2>Component details</h2>

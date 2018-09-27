@@ -13,7 +13,8 @@
         "silverstripe/elemental-fileblock": "1.x-dev",
         "silverstripe/userforms": "^5.2",
         "silverstripe/spamprotection": "^3.0",
-        "undefinedoffset/silverstripe-nocaptcha": "^2.0"
+        "undefinedoffset/silverstripe-nocaptcha": "^2.0",
+        "silverstripe/blog": "^3.2"
     },
     "repositories": [
         {
