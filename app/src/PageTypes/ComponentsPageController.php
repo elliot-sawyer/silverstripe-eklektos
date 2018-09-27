@@ -1,6 +1,6 @@
 <?php
 
-namespace Soulroll\Eklektos;
+namespace Eklektos\Eklektos\PageTypes;
 
 use PageController;
 
