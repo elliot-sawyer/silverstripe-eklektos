@@ -11,7 +11,9 @@
         "dnadesign/silverstripe-elemental-userforms": "^2.0",
         "dnadesign/silverstripe-elemental-list": "^1.1",
         "silverstripe/elemental-fileblock": "1.x-dev",
-        "silverstripe/userforms": "^5.2"
+        "silverstripe/userforms": "^5.2",
+        "silverstripe/spamprotection": "^3.0",
+        "undefinedoffset/silverstripe-nocaptcha": "^2.0"
     },
     "repositories": [
         {
