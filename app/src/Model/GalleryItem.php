@@ -9,14 +9,14 @@ use SilverStripe\ORM\DataObject,
     SilverStripe\Forms\TextAreaField,
     Eklektos\Eklektos\PageTypes\ComponentsPage;
 
-class CarouselItem extends DataObject
+class GalleryItem extends DataObject
 {
 
     /**
      * @var string
      * @config
      */
-    private static $table_name = 'CarouselItem';
+    private static $table_name = 'GalleryItem';
 
     /**
      * @var array
@@ -63,18 +63,17 @@ class CarouselItem extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                UploadField::create('Image', 'Carousel Image')
-                    ->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
+                UploadField::create('Image', 'Gallery Image')
+                    ->setDescription('Image size: 640 x 480')
                     ->setAllowedFileCategories('image')
                     ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-                    ->setFolderName('CarouselImages'),
+                    ->setFolderName('GalleryImages'),
                 TextField::create('Title','Title'),
                 TextAreaField::create('Caption','Caption')
             ]
         );
 
         return $fields;
-
     }
 
     /**
