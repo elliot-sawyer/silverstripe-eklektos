@@ -23,9 +23,9 @@ class GalleryItem extends DataObject
      * @config
      */
     private static $db = array(
+        'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
-        'Caption' => 'Varchar(255)',
-        'SortOrder' => 'Int'
+        'Caption' => 'Varchar(255)'
     );
 
     /**
@@ -64,7 +64,7 @@ class GalleryItem extends DataObject
             'Root.Main',
             [
                 UploadField::create('Image', 'Gallery Image')
-                    ->setDescription('Image size: 640 x 480')
+                    ->setDescription('Image size: 800 x 600')
                     ->setAllowedFileCategories('image')
                     ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
                     ->setFolderName('GalleryImages'),

@@ -14,7 +14,8 @@
         "silverstripe/userforms": "^5.2",
         "silverstripe/spamprotection": "^3.0",
         "undefinedoffset/silverstripe-nocaptcha": "^2.0",
-        "silverstripe/blog": "^3.2"
+        "silverstripe/blog": "^3.2",
+        "silverstripe/elemental-bannerblock": "1.x-dev"
     },
     "repositories": [
         {

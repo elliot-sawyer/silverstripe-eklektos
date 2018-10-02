@@ -7,7 +7,9 @@ use Page,
     SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
     SilverStripe\Forms\CheckboxField,
     Eklektos\Eklektos\Model\CarouselItem,
-    Eklektos\Eklektos\Model\GalleryItem;
+    Eklektos\Eklektos\Model\GalleryItem,
+    Eklektos\Eklektos\Model\AccordionItem,
+    Eklektos\Eklektos\Model\CardItem;
 
 class ComponentsPage extends Page
 {
@@ -24,7 +26,8 @@ class ComponentsPage extends Page
      */
     private static $db = array(
         'Arrows' => 'Boolean',
-        'Indicators' => 'Boolean'
+        'Indicators' => 'Boolean',
+        'FirstAccordionOpen' => 'Boolean'
     );
 
     /**
@@ -33,7 +36,9 @@ class ComponentsPage extends Page
      */
     private static $has_many = array(
         'CarouselItems' => CarouselItem::class,
-        'GalleryItems' => GalleryItem::class
+        'GalleryItems' => GalleryItem::class,
+        'AccordionItems' => AccordionItem::class,
+        'CardItems' => CardItem::class
     );
 
     /**
@@ -64,6 +69,31 @@ class ComponentsPage extends Page
                     'GalleryItems',
                     'Gallery Items',
                     $this->GalleryItems(),
+                    GridFieldConfig_RecordEditor::create()
+                )
+            )
+        );
+
+        $fields->addFieldsToTab(
+            'Root.Accordion',
+            array(
+                GridField::create(
+                    'AccordionItems',
+                    'Accordion Items',
+                    $this->AccordionItems(),
+                    GridFieldConfig_RecordEditor::create()
+                ),
+                CheckboxField::create('FirstAccordionOpen', 'Make the first accordion opened')
+            )
+        );
+
+        $fields->addFieldsToTab(
+            'Root.Cards',
+            array(
+                GridField::create(
+                    'CardItems',
+                    'Card Items',
+                    $this->CardItems(),
                     GridFieldConfig_RecordEditor::create()
                 )
             )

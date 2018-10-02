@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <h2>Carousel</h2>
-          <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none" data-ride="carousel">
+          <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none mb-5" data-ride="carousel">
             <% if $Indicators == 1 %>
             <ol class="carousel-indicators">
               <% loop $CarouselItems %>
@@ -35,7 +35,6 @@
             </a>
             <% end_if %>
           </div>
-          <br/><br/>
           <h2>Gallery</h2>
           <% if $GalleryItems %>
             <div class="row">
@@ -62,9 +61,42 @@
               <% end_loop %>
             </div>
           <% end_if %>
+          <h2>Accordion</h2>
+          <div id="accordion" class="mb-4" role="tablist">
+          <% loop $AccordionItems %>
+            <div class="card">
+              <div class="card-header collapsed" role="tab" id="heading{$ID}" data-toggle="collapse" href="#collapse{$ID}" aria-expanded="false" aria-controls="collapse{$ID}">
+                <h5 class="mb-0">
+                  $Title
+                </h5>
+              </div>
+              <div id="collapse{$ID}" class="collapse" role="tabpanel" aria-labelledby="heading{$ID}" data-parent="#accordion">
+                <div class="card-body">
+                  $Content
+                </div>
+              </div>
+            </div>
+          <% end_loop %>
+          </div>
+          <h2>Cards</h2>
+          <div class="row">
+            <% loop $CardItems %>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="card mb-4">
+                  <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">$Title</h4>
+                    <p class="card-text">$Content</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+              </div>
+            <% end_loop %>
+          </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-
           <h2>Component details</h2>
           <ul>
             <li>Browsers supported</li>
@@ -73,10 +105,6 @@
             <li>Options that you can customise</li>
           </ul>
           <p>Notes:</p>
-
-
-          Accordions<br/>
-          Cards<br/>
           Responsive images<br/>
           Responsive tables<br/>
           Alert messages<br/>
@@ -85,7 +113,7 @@
           News
           Quicklinks
           Social media icons
-
+          Masonary
         </div>
       </div>
     </div>

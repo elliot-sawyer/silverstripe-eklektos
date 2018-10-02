@@ -7,16 +7,18 @@ use SilverStripe\ORM\DataObject,
     SilverStripe\AssetAdmin\Forms\UploadField,
     SilverStripe\Forms\TextField,
     SilverStripe\Forms\TextAreaField,
-    Eklektos\Eklektos\PageTypes\ComponentsPage;
+    Eklektos\Eklektos\PageTypes\ComponentsPage,
+    SilverStripe\Forms\TreeDropdownField,
+    SilverStripe\CMS\Model\SiteTree;
 
-class CarouselItem extends DataObject
+class CardItem extends DataObject
 {
 
     /**
      * @var string
      * @config
      */
-    private static $table_name = 'CarouselItem';
+    private static $table_name = 'CardItem';
 
     /**
      * @var string
@@ -31,7 +33,7 @@ class CarouselItem extends DataObject
     private static $db = array(
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
-        'Caption' => 'Varchar(255)'
+        'Content' => 'Varchar(255)'
     );
 
     /**
@@ -40,7 +42,8 @@ class CarouselItem extends DataObject
      */
     private static $has_one = array(
         'ComponentsPage' => ComponentsPage::class,
-        'Image' => Image::class
+        'Image' => Image::class,
+        'InternalURL' => SiteTree::class
     );
 
     /**
@@ -50,7 +53,7 @@ class CarouselItem extends DataObject
     private static $summary_fields = array(
         'ImageThumb' => 'Image',
         'Title' => 'Title',
-        'Caption' => 'Caption'
+        'Content' => 'Content'
     );
 
     /**
@@ -63,24 +66,41 @@ class CarouselItem extends DataObject
         $fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
         $fields->removeFieldFromTab('Root.Main', 'SortOrder');
         $fields->removeFieldFromTab('Root.Main', 'Title');
-        $fields->removeFieldFromTab('Root.Main', 'Caption');
-        $fields->removeFieldFromTab('Root.Main', 'Heading');
+        $fields->removeFieldFromTab('Root.Main', 'Content');
+        $fields->removeFieldFromTab('Root.Main', 'InternalURLID');
 
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                UploadField::create('Image', 'Carousel Image')
-                    ->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
+                UploadField::create('Image', 'Card Image')
+                    ->setDescription('Image size: 640 x 480')
                     ->setAllowedFileCategories('image')
                     ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-                    ->setFolderName('CarouselImages'),
+                    ->setFolderName('CardImages'),
                 TextField::create('Title','Title'),
-                TextAreaField::create('Caption','Caption')
+                TextAreaField::create('Content','Content')
             ]
         );
 
-        return $fields;
+        $fields->addFieldsToTab('Root.Main', TreeDropdownField::create(
+            'InternalURLID',
+            'Page link',
+            SiteTree::class
+        ));
 
+        return $fields;
+    }
+
+    /**
+     * @return string
+     */
+    public function Link()
+    {
+        if (!$this->InternalURL()->exists()) {
+            return '';
+        }
+
+        return $this->InternalURL()->Link();
     }
 
     /**

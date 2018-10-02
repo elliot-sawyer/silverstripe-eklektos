@@ -9,14 +9,14 @@ use SilverStripe\ORM\DataObject,
     SilverStripe\Forms\TextAreaField,
     Eklektos\Eklektos\PageTypes\ComponentsPage;
 
-class CarouselItem extends DataObject
+class AccordionItem extends DataObject
 {
 
     /**
      * @var string
      * @config
      */
-    private static $table_name = 'CarouselItem';
+    private static $table_name = 'AccordionItem';
 
     /**
      * @var string
@@ -31,7 +31,7 @@ class CarouselItem extends DataObject
     private static $db = array(
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
-        'Caption' => 'Varchar(255)'
+        'Content' => 'Varchar(255)'
     );
 
     /**
@@ -39,8 +39,7 @@ class CarouselItem extends DataObject
      * @config
      */
     private static $has_one = array(
-        'ComponentsPage' => ComponentsPage::class,
-        'Image' => Image::class
+        'ComponentsPage' => ComponentsPage::class
     );
 
     /**
@@ -48,9 +47,8 @@ class CarouselItem extends DataObject
      * @config
      */
     private static $summary_fields = array(
-        'ImageThumb' => 'Image',
         'Title' => 'Title',
-        'Caption' => 'Caption'
+        'Content' => 'Content'
     );
 
     /**
@@ -63,44 +61,17 @@ class CarouselItem extends DataObject
         $fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
         $fields->removeFieldFromTab('Root.Main', 'SortOrder');
         $fields->removeFieldFromTab('Root.Main', 'Title');
-        $fields->removeFieldFromTab('Root.Main', 'Caption');
-        $fields->removeFieldFromTab('Root.Main', 'Heading');
+        $fields->removeFieldFromTab('Root.Main', 'Content');
 
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                UploadField::create('Image', 'Carousel Image')
-                    ->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
-                    ->setAllowedFileCategories('image')
-                    ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-                    ->setFolderName('CarouselImages'),
                 TextField::create('Title','Title'),
-                TextAreaField::create('Caption','Caption')
+                TextAreaField::create('Content','Content')
             ]
         );
 
         return $fields;
-
-    }
-
-    /**
-     * @return image
-     */
-    public function getImageThumb()
-    {
-        if($this->Image()->exists()) {
-            return $this->Image()->ScaleWidth(100);
-        }
-
-        return "(No image)";
-    }
-
-    /**
-     * @return string
-     */
-    public function onAfterWrite()
-    {
-        $this->Image()->publishSingle();
     }
 
 }
