@@ -7,7 +7,8 @@ use SilverStripe\ORM\DataObject,
     SilverStripe\AssetAdmin\Forms\UploadField,
     SilverStripe\Forms\TextField,
     SilverStripe\Forms\TextAreaField,
-    Eklektos\Eklektos\PageTypes\ComponentsPage;
+    Eklektos\Eklektos\PageTypes\ComponentsPage,
+    Eklektos\Eklektos\PageTypes\HomePage;
 
 class CarouselItem extends DataObject
 {
@@ -40,6 +41,7 @@ class CarouselItem extends DataObject
      */
     private static $has_one = array(
         'ComponentsPage' => ComponentsPage::class,
+        'HomePage' => HomePage::class,
         'Image' => Image::class
     );
 
