@@ -6,19 +6,19 @@ use PageController;
 
 class HomePageController extends PageController
 {
-    public function getNewsPage()
+    public function getBlogPage()
     {
-        return NewsHolder::get_one(NewsHolder::class);
+        return Blog::get_one(Blog::class);
     }
 
     /**
      * @param int $amount The amount of items to provide.
      */
-    public function getNewsItems($amount = 2)
+    public function getBlogItems($amount = 2)
     {
-        $newsHolder = $this->getNewsPage();
-        if ($newsHolder) {
-            $controller = NewsHolderController::create($newsHolder);
+        $blogHolder = $this->getNewsPage();
+        if ($blogHolder) {
+            $controller = BlogController::create($blogHolder);
             return $controller->Updates()->limit($amount);
         }
     }

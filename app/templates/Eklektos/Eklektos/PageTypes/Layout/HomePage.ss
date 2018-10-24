@@ -8,11 +8,9 @@
     <div class="popular-links">
       <h5 class="popular-links-heading">Popular links</h5>
       <ul>
-        <li><a href="#" class="">Link one</a></li>
-        <li><a href="#" class="">Link two</a></li>
-        <li><a href="#" class="">Link three</a></li>
-        <li><a href="#" class="">Link four</a></li>
-        <li><a href="#" class="">Link five</a></li>
+      <% loop $PopularLinks %>
+        <li><a href="$Link">$Title</a></li>
+      <% end_loop %>
       </ul>
     </div>
   </div>
@@ -39,7 +37,19 @@
 <div class="container mt-4 mb-4">
   <div class="row">
     <div class="col-8">
-      <h2>Heading</h2>
+      <div class="row">
+      <% loop $CardItems %>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="card mb-4">
+            <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">$Title</h4>
+              <p class="card-text">$Content</p>
+            </div>
+          </div>
+        </div>
+      <% end_loop %>
+      </div>
     </div>
     <div class="col-4">
       <h2>News</h2>
