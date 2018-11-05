@@ -34,17 +34,32 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="container mt-4 mb-4">
+<div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-8">
       <div class="row">
       <% loop $CardItems %>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
           <div class="card mb-4">
-            <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+            <% if $Link %>
+            <a href="$Link">
+              <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+            </a>
+            <% else %>
+              <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+            <% end_if %>
             <div class="card-body">
               <h4 class="card-title">$Title</h4>
               <p class="card-text">$Content</p>
+              <% if $Link %>
+                <a href="$Link">
+                <% if $LinkTitle %>
+                  $LinkTitle
+                <% else %>
+                  $InternalURL.title
+                <% end_if %>
+                </a>
+              <% end_if %>
             </div>
           </div>
         </div>
@@ -52,8 +67,13 @@
       </div>
     </div>
     <div class="col-4">
-      <h2>News</h2>
-      test
+      <h2 class="news-heading">News</h2>
+      <% loop BlogPosts %>
+        <div class="news-post">
+          <a href="$Link"><h4 class="news-post-heading">$Title</h4></a>
+          <span class="news-post-date">$PublishDate</span>
+        </div>
+      <% end_loop %>
     </div>
   </div>
 </div>

@@ -81,15 +81,11 @@ class CardItem extends DataObject
                     ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
                     ->setFolderName('CardImages'),
                 TextField::create('Title','Title'),
-                TextAreaField::create('Content','Content')
+                TextAreaField::create('Content','Content'),
+                TreeDropdownField::create('InternalURLID', 'Page Link', SiteTree::class),
+                TextField::create('LinkTitle','Link Title')
             ]
         );
-
-        $fields->addFieldsToTab('Root.Main', TreeDropdownField::create(
-            'InternalURLID',
-            'Page link',
-            SiteTree::class
-        ));
 
         return $fields;
     }

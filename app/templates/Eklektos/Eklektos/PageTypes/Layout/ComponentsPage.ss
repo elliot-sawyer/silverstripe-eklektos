@@ -40,7 +40,7 @@
             <div class="row">
               <% loop $GalleryItems %>
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                  <div class="gallery-image">
+                  <div class="gallery-image mb-5">
                     <div class="gallery-image-border">
                       <a class="gallery-popup" href="<% if $Image %>$Image.Link<% else %>http://placehold.it/800x600<% end_if %>" title="$Caption">
                         <% if $Image %>
@@ -62,7 +62,7 @@
             </div>
           <% end_if %>
           <h2>Accordion</h2>
-          <div id="accordion" class="mb-4" role="tablist">
+          <div id="accordion" class="mb-5" role="tablist">
           <% loop $AccordionItems %>
             <div class="card">
               <div class="card-header collapsed" role="tab" id="heading{$ID}" data-toggle="collapse" href="#collapse{$ID}" aria-expanded="false" aria-controls="collapse{$ID}">
@@ -88,9 +88,17 @@
                     <h4 class="card-title">$Title</h4>
                     <p class="card-text">$Content</p>
                   </div>
+                  <% if $Link %>
                   <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <a href="$Link">
+                    <% if $LinkTitle %>
+                      <small class="text-muted">$LinkTitle</small>
+                    <% else %>
+                      <small class="text-muted">$InternalURL.title</small>
+                    <% end_if %>
+                    </a>
                   </div>
+                  <% end_if %>
                 </div>
               </div>
             <% end_loop %>

@@ -2,24 +2,23 @@
 
 namespace Eklektos\Eklektos\PageTypes;
 
-use PageController;
+use PageController,
+    SilverStripe\ORM\DataObject,
+    SilverStripe\Blog\Model\BlogPost;
 
 class HomePageController extends PageController
 {
-    public function getBlogPage()
-    {
-        return Blog::get_one(Blog::class);
-    }
-
-    /**
-     * @param int $amount The amount of items to provide.
-     */
-    public function getBlogItems($amount = 2)
-    {
-        $blogHolder = $this->getNewsPage();
-        if ($blogHolder) {
-            $controller = BlogController::create($blogHolder);
-            return $controller->Updates()->limit($amount);
-        }
+    public function BlogPosts() {
+        $posts = BlogPost::get();
+        return $posts;
     }
 }
+
+/*
+    public function Classifieds($count = 10)
+    {
+        $ClassifiedsItems = DataObject::get('ClassifiedsItem')
+            ->filter('ClosingDate:GreaterThanOrEqual', time());
+        return $ClassifiedsItems->limit($count)->sort('Created', 'DESC');
+    }
+*/

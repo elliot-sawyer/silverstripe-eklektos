@@ -1,0 +1,6 @@
+---
+Name: myextensions
+---
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Eklektos\Eklektos\Extensions\CustomSiteConfig
