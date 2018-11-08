@@ -4,9 +4,9 @@ namespace Eklektos\Eklektos\Model;
 
 use SilverStripe\ORM\DataObject,
     SilverStripe\Forms\TextField,
-    Eklektos\Eklektos\PageTypes\HomePage,
     SilverStripe\Forms\TreeDropdownField,
-    SilverStripe\CMS\Model\SiteTree;
+    SilverStripe\CMS\Model\SiteTree,
+    Eklektos\Eklektos\PageTypes\HomePage;
 
 class PopularLink extends DataObject
 {

@@ -4,17 +4,17 @@
     <div class="page">
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-          <h2>Carousel</h2>
+          <h2>Slider</h2>
           <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none mb-5" data-ride="carousel">
             <% if $Indicators == 1 %>
             <ol class="carousel-indicators">
-              <% loop $CarouselItems %>
+              <% loop $SliderItems %>
                 <li data-target="#carousel" data-slide-to="$Pos(0)" <% if $First %>class="active"<% end_if %>></li>
               <% end_loop %>
             </ol>
             <% end_if %>
             <div class="carousel-inner" role="listbox">
-              <% loop $CarouselItems %>
+              <% loop $SliderItems %>
               <div class="carousel-item <% if $First %>active<% end_if %>">
                 <img class="d-block img-fluid ml-auto mr-auto" src="$Image.url" alt="" title="">
                 <div class="carousel-caption">
@@ -34,6 +34,14 @@
               <span class="sr-only">Next</span>
             </a>
             <% end_if %>
+          </div>
+          <h2>Carousel</h2>
+          <span class="slick-carousel-arrow-left">test</span>
+          <span class="slick-carousel-arrow-right">test</span>
+          <div class="slick-carousel mb-5" data-slick='{"slidesToShow": $CarouselColumns, "slidesToScroll": 1}'>
+          <% loop $CarouselItems %>
+            <div>$Image</div>
+          <% end_loop %>
           </div>
           <h2>Gallery</h2>
           <% if $GalleryItems %>

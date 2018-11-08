@@ -1,6 +1,6 @@
 <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none" data-ride="carousel">
   <ol class="carousel-indicators">
-    <% loop $CarouselItems %>
+    <% loop $SliderItems %>
       <li data-target="#carousel" data-slide-to="$Pos(0)" <% if $First %>class="active"<% end_if %>></li>
     <% end_loop %>
   </ol>
@@ -15,9 +15,9 @@
     </div>
   </div>
   <div class="carousel-inner" role="listbox">
-  <% loop $CarouselItems %>
+  <% loop $SliderItems %>
     <div class="carousel-item <% if $First %>active<% end_if %>">
-      $Image.ReponsiveHomePageCarousel
+      $Image.ReponsiveHomePageSlider
       <div class="carousel-caption">
         <h3>$Title</h3>
         <p>$Caption</p>
@@ -36,10 +36,10 @@
 </div>
 <div class="container mt-5 mb-5">
   <div class="row">
-    <div class="col-8">
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
       <div class="row">
       <% loop $CardItems %>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
           <div class="card mb-4">
             <% if $Link %>
             <a href="$Link">
@@ -66,7 +66,7 @@
       <% end_loop %>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <h2 class="news-heading">News</h2>
       <% loop BlogPosts %>
         <div class="news-post">

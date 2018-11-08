@@ -6,6 +6,8 @@ use Page,
     SilverStripe\Forms\GridField\GridField,
     SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
     SilverStripe\Forms\CheckboxField,
+    SilverStripe\Forms\DropdownField,
+    Eklektos\Eklektos\Model\SliderItem,
     Eklektos\Eklektos\Model\CarouselItem,
     Eklektos\Eklektos\Model\GalleryItem,
     Eklektos\Eklektos\Model\AccordionItem,
@@ -27,7 +29,8 @@ class ComponentsPage extends Page
     private static $db = array(
         'Arrows' => 'Boolean',
         'Indicators' => 'Boolean',
-        'FirstAccordionOpen' => 'Boolean'
+        'FirstAccordionOpen' => 'Boolean',
+        'CarouselColumns' => 'Varchar(255)'
     );
 
     /**
@@ -35,6 +38,7 @@ class ComponentsPage extends Page
      * @config
      */
     private static $has_many = array(
+        'SliderItems' => SliderItem::class,
         'CarouselItems' => CarouselItem::class,
         'GalleryItems' => GalleryItem::class,
         'AccordionItems' => AccordionItem::class,
@@ -49,6 +53,20 @@ class ComponentsPage extends Page
         $fields = parent::getCMSFields();
 
         $fields->addFieldsToTab(
+            'Root.Slider',
+            array(
+                GridField::create(
+                    'SliderItems',
+                    'Slider Items',
+                    $this->SliderItems(),
+                    GridFieldConfig_RecordEditor::create()
+                ),
+                CheckboxField::create('Arrows', 'Arrows'),
+                CheckboxField::create('Indicators', 'Indicators')
+            )
+        );
+
+        $fields->addFieldsToTab(
             'Root.Carousel',
             array(
                 GridField::create(
@@ -56,6 +74,17 @@ class ComponentsPage extends Page
                     'Carousel Items',
                     $this->CarouselItems(),
                     GridFieldConfig_RecordEditor::create()
+                ),
+                DropdownField::create(
+                    'CarouselColumns',
+                    'Carousel Columns',
+                    [
+                        '1' => 'One Column',
+                        '2' => 'Two Columns',
+                        '3' => 'Three Columns',
+                        '4' => 'Four Columns'
+                    ],
+                    '1'
                 ),
                 CheckboxField::create('Arrows', 'Arrows'),
                 CheckboxField::create('Indicators', 'Indicators')

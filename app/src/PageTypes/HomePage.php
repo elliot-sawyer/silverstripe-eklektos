@@ -6,7 +6,7 @@ use Page,
     SilverStripe\Forms\GridField\GridField,
     SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
     SilverStripe\Forms\CheckboxField,
-    Eklektos\Eklektos\Model\CarouselItem,
+    Eklektos\Eklektos\Model\SliderItem,
     Eklektos\Eklektos\Model\PopularLink,
     Eklektos\Eklektos\Model\CardItem;
 
@@ -24,7 +24,7 @@ class HomePage extends Page
      * @config
      */
     private static $has_many = array(
-        'CarouselItems' => CarouselItem::class,
+        'SliderItems' => SliderItem::class,
         'PopularLinks' => PopularLink::class,
         'CardItems' => CardItem::class
     );
@@ -37,12 +37,12 @@ class HomePage extends Page
         $fields = parent::getCMSFields();
 
         $fields->addFieldsToTab(
-            'Root.Carousel',
+            'Root.Slider',
             array(
                 GridField::create(
-                    'CarouselItems',
-                    'Carousel Items',
-                    $this->CarouselItems(),
+                    'SliderItems',
+                    'Slider Items',
+                    $this->SliderItems(),
                     GridFieldConfig_RecordEditor::create()
                 ),
                 CheckboxField::create('Arrows', 'Arrows'),

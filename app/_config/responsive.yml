@@ -3,7 +3,7 @@ After: 'silverstripe-responsive-images/*'
 ---
 Heyday\ResponsiveImages\ResponsiveImageExtension:
   sets:
-    ReponsiveHomePageCarousel:
+    ReponsiveHomePageSlider:
       method: Fill
       arguments:
         '(min-width: 1680px)': [2560, 550]
