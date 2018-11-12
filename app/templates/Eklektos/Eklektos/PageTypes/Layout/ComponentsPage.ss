@@ -36,13 +36,28 @@
             <% end_if %>
           </div>
           <h2>Carousel</h2>
-          <span class="slick-carousel-arrow-left">test</span>
-          <span class="slick-carousel-arrow-right">test</span>
-          <div class="slick-carousel mb-5" data-slick='{"slidesToShow": $CarouselColumns, "slidesToScroll": 1}'>
-          <% loop $CarouselItems %>
-            <div>$Image</div>
-          <% end_loop %>
+
+          <div class="slick-carousel-container">
+            <span class="slick-carousel-arrow-left"></span>
+            <span class="slick-carousel-arrow-right"></span>
+            <div class="slick-carousel mb-5" data-slick='{"slidesToShow": $CarouselColumns, "slidesToScroll": 1, "dots": true}'>
+            <% loop $CarouselItems %>
+              <div class="slick-slide">
+                <div class="slick-slide-content">
+                  $Image
+                  <% if $Title || $Caption %>
+                  <div class="slick-slide-overlay">
+                    <h5 class="slick-slide-title">$Title</h5>
+                    <p class="slick-slide-caption">$Caption</p>
+                  </div>
+                  <% end_if %>
+                </div>
+              </div>
+            <% end_loop %>
+            </div>
           </div>
+
+
           <h2>Gallery</h2>
           <% if $GalleryItems %>
             <div class="row">
@@ -59,7 +74,7 @@
                       </a>
                       <% if $Title || $Caption %>
                       <div class="gallery-image-description">
-                        <span class="gallery-image-title">$Title</span>
+                        <h5 class="gallery-image-title">$Title</h5>
                         <span class="gallery-image-caption">$Caption</span>
                       </div>
                       <% end_if %>
