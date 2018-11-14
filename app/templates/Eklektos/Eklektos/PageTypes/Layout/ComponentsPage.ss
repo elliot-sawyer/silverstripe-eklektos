@@ -35,28 +35,38 @@
             </a>
             <% end_if %>
           </div>
-          <h2>Carousel</h2>
 
+          <h2>Carousel</h2>
           <div class="slick-carousel-container">
             <span class="slick-carousel-arrow-left"></span>
             <span class="slick-carousel-arrow-right"></span>
             <div class="slick-carousel mb-5" data-slick='{"slidesToShow": $CarouselColumns, "slidesToScroll": 1, "dots": true}'>
             <% loop $CarouselItems %>
               <div class="slick-slide">
-                <div class="slick-slide-content">
-                  $Image
-                  <% if $Title || $Caption %>
-                  <div class="slick-slide-overlay">
-                    <h5 class="slick-slide-title">$Title</h5>
-                    <p class="slick-slide-caption">$Caption</p>
-                  </div>
-                  <% end_if %>
+              <% if $Image %>
+              <%--<a href="$Image.url" class="slick-slide-content slick-expand-indicator">--%>
+              <a class="popup popup-image popup-indicator" href="$Image.url">
+                $Image
+                <% if $Title || $Caption %>
+                <div class="slick-overlay">
+                  <h5 class="slick-title">$Title</h5>
+                  <p class="slick-caption">$Caption</p>
                 </div>
+                <% end_if %>
+              </a>
+              <% else_if $YouTubeID %>
+              <a class="popup popup-youtube" href="http://www.youtube.com/watch?v=$YouTubeID">
+                Open YouTube video
+              </a>
+              <% else_if $VimeoID %>
+              <a class="popup popup-vimeo" href="http://www.youtube.com/watch?v=$VimeoID">
+                Open Vimeo video
+              </a>
+              <% end_if %>
               </div>
             <% end_loop %>
             </div>
           </div>
-
 
           <h2>Gallery</h2>
           <% if $GalleryItems %>
@@ -84,6 +94,7 @@
               <% end_loop %>
             </div>
           <% end_if %>
+
           <h2>Accordion</h2>
           <div id="accordion" class="mb-5" role="tablist">
           <% loop $AccordionItems %>

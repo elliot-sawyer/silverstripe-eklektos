@@ -16,7 +16,8 @@
         "undefinedoffset/silverstripe-nocaptcha": "^2.0",
         "silverstripe/blog": "^3.2",
         "silverstripe/elemental-bannerblock": "1.x-dev",
-        "heyday/silverstripe-responsive-images": "^2.0"
+        "heyday/silverstripe-responsive-images": "^2.0",
+        "silverstripe/display-logic": "^2.0"
     },
     "repositories": [
         {
