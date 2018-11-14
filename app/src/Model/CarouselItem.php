@@ -66,7 +66,8 @@ class CarouselItem extends DataObject
      */
     private static $has_one = array(
         'ComponentsPage' => ComponentsPage::class,
-        'Image' => Image::class
+        'Image' => Image::class,
+        'YoutubeImage' => Image::class
     );
 
     /**
@@ -93,6 +94,7 @@ class CarouselItem extends DataObject
         $fields->removeFieldFromTab('Root.Main', 'Image');
         $fields->removeFieldFromTab('Root.Main', 'YouTubeID');
         $fields->removeFieldFromTab('Root.Main', 'VimeoID');
+        $fields->removeFieldFromTab('Root.Main', 'YoutubeImage');
         $fields->addFieldsToTab(
             'Root.Main',
             [
@@ -109,12 +111,14 @@ class CarouselItem extends DataObject
 
                 Wrapper::create(
                     TextField::create('YouTubeID', 'YouTube')
-                        ->setDescription('Please type the YouTube ID (e.g. tdKMEfvkrFw)')
+                        ->setDescription('Please type the YouTube ID (e.g. tdKMEfvkrFw)'),
+                    UploadField::create('YouTubeImage', 'YouTube Thumbnail Image')
                 )->hideUnless('Type')->isEqualTo('YouTubeID')->end(),
 
                 Wrapper::create(
-                TextField::create('VimeoID', 'Vimeo')
-                    ->setDescription('Please type the Vimeo ID (e.g. tdKMEfvkrFw)')
+                    TextField::create('VimeoID', 'Vimeo')
+                        ->setDescription('Please type the Vimeo ID (e.g. tdKMEfvkrFw)'),
+                    UploadField::create('VimeoImage', 'Vimeo Thumbnail Image')
                 )->hideUnless('Type')->isEqualTo('VimeoID')->end(),
 
                 TextField::create('Title','Title'),
