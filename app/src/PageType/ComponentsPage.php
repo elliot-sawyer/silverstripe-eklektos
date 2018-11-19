@@ -1,17 +1,17 @@
 <?php
 
-namespace Eklektos\Eklektos\PageTypes;
+namespace Eklektos\Eklektos\PageType;
 
-use Page,
-    SilverStripe\Forms\GridField\GridField,
-    SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
-    SilverStripe\Forms\CheckboxField,
-    SilverStripe\Forms\DropdownField,
-    Eklektos\Eklektos\Model\SliderItem,
-    Eklektos\Eklektos\Model\CarouselItem,
-    Eklektos\Eklektos\Model\GalleryItem,
-    Eklektos\Eklektos\Model\AccordionItem,
-    Eklektos\Eklektos\Model\CardItem;
+use Page;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\DropdownField;
+use Eklektos\Eklektos\Model\SliderItem;
+use Eklektos\Eklektos\Model\CarouselItem;
+use Eklektos\Eklektos\Model\GalleryItem;
+use Eklektos\Eklektos\Model\AccordionItem;
+use Eklektos\Eklektos\Model\CardItem;
 
 class ComponentsPage extends Page
 {
@@ -27,8 +27,10 @@ class ComponentsPage extends Page
      * @config
      */
     private static $db = array(
-        'Arrows' => 'Boolean',
-        'Indicators' => 'Boolean',
+        'SliderArrows' => 'Boolean',
+        'SliderIndicators' => 'Boolean',
+        'CarouselArrows' => 'Boolean',
+        'CarouselIndicators' => 'Boolean',
         'FirstAccordionOpen' => 'Boolean',
         'CarouselColumns' => 'Varchar(255)'
     );
@@ -61,8 +63,8 @@ class ComponentsPage extends Page
                     $this->SliderItems(),
                     GridFieldConfig_RecordEditor::create()
                 ),
-                CheckboxField::create('Arrows', 'Arrows'),
-                CheckboxField::create('Indicators', 'Indicators')
+                CheckboxField::create('SliderArrows', 'Arrows'),
+                CheckboxField::create('SliderIndicators', 'Indicators')
             )
         );
 
@@ -86,8 +88,8 @@ class ComponentsPage extends Page
                     ],
                     '1'
                 ),
-                CheckboxField::create('Arrows', 'Arrows'),
-                CheckboxField::create('Indicators', 'Indicators')
+                CheckboxField::create('CarouselArrows', 'Arrows'),
+                CheckboxField::create('CarouselIndicators', 'Indicators')
             )
         );
 

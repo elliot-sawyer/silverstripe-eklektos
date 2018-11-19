@@ -2,11 +2,12 @@
 
 namespace Eklektos\Eklektos\Model;
 
-use SilverStripe\ORM\DataObject,
-    SilverStripe\Versioned\Versioned,
-    SilverStripe\Forms\FieldList,
-    SilverStripe\Forms\TextField,
-    SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use Eklektos\Eklektos\Element\AccordionElement;
 
 class AccordionElementItem extends DataObject
 {

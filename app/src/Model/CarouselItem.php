@@ -2,15 +2,15 @@
 
 namespace Eklektos\Eklektos\Model;
 
-use SilverStripe\ORM\DataObject,
-    SilverStripe\ORM\ArrayList,
-    SilverStripe\Assets\Image,
-    SilverStripe\AssetAdmin\Forms\UploadField,
-    SilverStripe\Forms\OptionsetField,
-    SilverStripe\Forms\TextField,
-    SilverStripe\Forms\TextAreaField,
-    Eklektos\Eklektos\PageTypes\ComponentsPage,
-    UncleCheese\DisplayLogic\Forms\Wrapper;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextAreaField;
+use UncleCheese\DisplayLogic\Forms\Wrapper;
+use Eklektos\Eklektos\PageType\ComponentsPage;
 
 class CarouselItem extends DataObject
 {
@@ -67,7 +67,8 @@ class CarouselItem extends DataObject
     private static $has_one = array(
         'ComponentsPage' => ComponentsPage::class,
         'Image' => Image::class,
-        'YoutubeImage' => Image::class
+        'YouTubeImage' => Image::class,
+        'VimeoImage' => Image::class
     );
 
     /**
@@ -94,7 +95,8 @@ class CarouselItem extends DataObject
         $fields->removeFieldFromTab('Root.Main', 'Image');
         $fields->removeFieldFromTab('Root.Main', 'YouTubeID');
         $fields->removeFieldFromTab('Root.Main', 'VimeoID');
-        $fields->removeFieldFromTab('Root.Main', 'YoutubeImage');
+        $fields->removeFieldFromTab('Root.Main', 'YouTubeImage');
+        $fields->removeFieldFromTab('Root.Main', 'VimeoImage');
         $fields->addFieldsToTab(
             'Root.Main',
             [
@@ -113,12 +115,18 @@ class CarouselItem extends DataObject
                     TextField::create('YouTubeID', 'YouTube')
                         ->setDescription('Please type the YouTube ID (e.g. tdKMEfvkrFw)'),
                     UploadField::create('YouTubeImage', 'YouTube Thumbnail Image')
+                        ->setAllowedFileCategories('image')
+                        ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
+                        ->setFolderName('CarouselImages')
                 )->hideUnless('Type')->isEqualTo('YouTubeID')->end(),
 
                 Wrapper::create(
                     TextField::create('VimeoID', 'Vimeo')
-                        ->setDescription('Please type the Vimeo ID (e.g. tdKMEfvkrFw)'),
+                        ->setDescription('Please type the Vimeo ID (e.g. 191882529)'),
                     UploadField::create('VimeoImage', 'Vimeo Thumbnail Image')
+                        ->setAllowedFileCategories('image')
+                        ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
+                        ->setFolderName('CarouselImages')
                 )->hideUnless('Type')->isEqualTo('VimeoID')->end(),
 
                 TextField::create('Title','Title'),

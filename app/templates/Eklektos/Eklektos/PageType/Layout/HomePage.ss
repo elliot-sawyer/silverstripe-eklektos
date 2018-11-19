@@ -1,9 +1,11 @@
 <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none" data-ride="carousel">
+  <% if $SliderIndicators == 1 %>
   <ol class="carousel-indicators">
     <% loop $SliderItems %>
       <li data-target="#carousel" data-slide-to="$Pos(0)" <% if $First %>class="active"<% end_if %>></li>
     <% end_loop %>
   </ol>
+  <% end_if %>
   <div class="container">
     <div class="popular-links">
       <h5 class="popular-links-heading">Popular links</h5>
@@ -25,6 +27,7 @@
     </div>
   <% end_loop %>
   </div>
+  <% if $SliderArrows == 1 %>
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -33,6 +36,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  <% end_if %>
 </div>
 <div class="container mt-5 mb-5">
   <div class="row">

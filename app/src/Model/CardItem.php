@@ -2,15 +2,15 @@
 
 namespace Eklektos\Eklektos\Model;
 
-use SilverStripe\ORM\DataObject,
-    SilverStripe\Assets\Image,
-    SilverStripe\AssetAdmin\Forms\UploadField,
-    SilverStripe\Forms\TextField,
-    SilverStripe\Forms\TextAreaField,
-    SilverStripe\Forms\TreeDropdownField,
-    SilverStripe\CMS\Model\SiteTree,
-    Eklektos\Eklektos\PageTypes\ComponentsPage,
-    Eklektos\Eklektos\PageTypes\HomePage;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextAreaField;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\CMS\Model\SiteTree;
+use Eklektos\Eklektos\PageType\ComponentsPage;
+use Eklektos\Eklektos\PageType\HomePage;
 
 class CardItem extends DataObject
 {

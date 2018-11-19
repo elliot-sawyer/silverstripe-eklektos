@@ -6,7 +6,7 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <h2>Slider</h2>
           <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none mb-5" data-ride="carousel">
-            <% if $Indicators == 1 %>
+            <% if $SliderIndicators == 1 %>
             <ol class="carousel-indicators">
               <% loop $SliderItems %>
                 <li data-target="#carousel" data-slide-to="$Pos(0)" <% if $First %>class="active"<% end_if %>></li>
@@ -24,7 +24,7 @@
               </div>
               <% end_loop %>
             </div>
-            <% if $Arrows == 1 %>
+            <% if $SliderArrows == 1 %>
             <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -35,7 +35,6 @@
             </a>
             <% end_if %>
           </div>
-
           <h2>Carousel</h2>
           <div class="slick-carousel-container">
             <span class="slick-carousel-arrow-left"></span>
@@ -55,19 +54,18 @@
                 <% end_if %>
               </a>
               <% else_if $YouTubeID %>
-              <a class="popup popup-youtube" href="http://www.youtube.com/watch?v=$YouTubeID">
-                Open YouTube video
+              <a class="popup popup-youtube <% if not $YouTubeImage %>popup-no-image<% end_if %>" href="http://www.youtube.com/watch?v=$YouTubeID">
+                $YouTubeImage
               </a>
               <% else_if $VimeoID %>
-              <a class="popup popup-vimeo" href="http://www.youtube.com/watch?v=$VimeoID">
-                Open Vimeo video
+              <a class="popup popup-vimeo <% if not $VimeoImage %>popup-no-image<% end_if %>" href="https://vimeo.com/$VimeoID">
+                $VimeoImage
               </a>
               <% end_if %>
               </div>
             <% end_loop %>
             </div>
           </div>
-
           <h2>Gallery</h2>
           <% if $GalleryItems %>
             <div class="row">
@@ -94,7 +92,6 @@
               <% end_loop %>
             </div>
           <% end_if %>
-
           <h2>Accordion</h2>
           <div id="accordion" class="mb-5" role="tablist">
           <% loop $AccordionItems %>
@@ -152,10 +149,11 @@
           Alert messages<br/>
           Page sharing<br/>
           Page section colours<br/>
-          News
-          Quicklinks
-          Social media icons
-          Masonary
+          News<br/>
+          Quicklinks<br/>
+          Social media icons<br/>
+          Masonary<br/>
+          Landing Page<br/>
         </div>
       </div>
     </div>

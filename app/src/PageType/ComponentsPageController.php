@@ -1,6 +1,6 @@
 <?php
 
-namespace Eklektos\Eklektos\PageTypes;
+namespace Eklektos\Eklektos\PageType;
 
 use PageController;
 

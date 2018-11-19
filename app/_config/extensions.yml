@@ -3,4 +3,4 @@ Name: myextensions
 ---
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - Eklektos\Eklektos\Extensions\CustomSiteConfig
+    - Eklektos\Eklektos\Extension\CustomSiteConfig

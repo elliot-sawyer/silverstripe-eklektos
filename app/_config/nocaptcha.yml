@@ -1,5 +1,5 @@
 ---
-Name: nocaptcha
+Name: mynocaptcha
 ---
 UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
   site_key: "YOUR_SITE_KEY" #Your site key (required)

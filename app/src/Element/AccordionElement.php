@@ -2,13 +2,11 @@
 
 namespace Eklektos\Eklektos\Element;
 
-use DNADesign\Elemental\Models\BaseElement,
-
-//	WebsiteRedesigns\Dragon\Element\AccordionElementItem,
-
-	SilverStripe\Forms\GridField\GridField,
-	SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
-	UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use DNADesign\Elemental\Models\BaseElement;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use	Eklektos\Eklektos\Model\AccordionElementItem;
 
 class AccordionElement extends BaseElement
 {

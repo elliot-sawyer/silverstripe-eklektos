@@ -1,14 +1,14 @@
 <?php
 
-namespace Eklektos\Eklektos\PageTypes;
+namespace Eklektos\Eklektos\PageType;
 
-use Page,
-    SilverStripe\Forms\GridField\GridField,
-    SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor,
-    SilverStripe\Forms\CheckboxField,
-    Eklektos\Eklektos\Model\SliderItem,
-    Eklektos\Eklektos\Model\PopularLink,
-    Eklektos\Eklektos\Model\CardItem;
+use Page;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\CheckboxField;
+use Eklektos\Eklektos\Model\SliderItem;
+use Eklektos\Eklektos\Model\PopularLink;
+use Eklektos\Eklektos\Model\CardItem;
 
 class HomePage extends Page
 {
@@ -18,6 +18,15 @@ class HomePage extends Page
      * @config
      */
     private static $table_name = 'HomePage';
+
+    /**
+     * @var array
+     * @config
+     */
+    private static $db = array(
+        'SliderArrows' => 'Boolean',
+        'SliderIndicators' => 'Boolean'
+    );
 
     /**
      * @var array
@@ -45,8 +54,8 @@ class HomePage extends Page
                     $this->SliderItems(),
                     GridFieldConfig_RecordEditor::create()
                 ),
-                CheckboxField::create('Arrows', 'Arrows'),
-                CheckboxField::create('Indicators', 'Indicators')
+                CheckboxField::create('SliderArrows', 'Arrows'),
+                CheckboxField::create('SliderIndicators', 'Indicators')
             )
         );
 

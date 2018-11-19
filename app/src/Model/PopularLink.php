@@ -2,11 +2,11 @@
 
 namespace Eklektos\Eklektos\Model;
 
-use SilverStripe\ORM\DataObject,
-    SilverStripe\Forms\TextField,
-    SilverStripe\Forms\TreeDropdownField,
-    SilverStripe\CMS\Model\SiteTree,
-    Eklektos\Eklektos\PageTypes\HomePage;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\CMS\Model\SiteTree;
+use Eklektos\Eklektos\PageType\HomePage;
 
 class PopularLink extends DataObject
 {
