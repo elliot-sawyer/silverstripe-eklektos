@@ -4,16 +4,43 @@ namespace Eklektos\Eklektos\Model;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\OptionsetField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextAreaField;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
-use Eklektos\Eklektos\PageType\ComponentsPage;
+use Eklektos\Eklektos\Element\CarouselElement;
 
-class CarouselItem extends DataObject
+class CarouselElementItem extends DataObject
 {
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $table_name = 'CarouselElementItem';
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $default_sort = 'SortOrder';
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $versioned_gridfield_extensions = true;
+
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $extensions = array(
+		Versioned::class
+	);
+
 	/**
 	 * Config variable for slider source default field mappings
 	 *
@@ -36,24 +63,12 @@ class CarouselItem extends DataObject
 	];
 
 	/**
-	 * @var string
-	 * @config
-	 */
-	private static $table_name = 'CarouselItem';
-
-	/**
-	 * @var string
-	 * @config
-	 */
-	private static $default_sort = 'SortOrder';
-
-	/**
 	 * @var array
 	 * @config
 	 */
 	private static $db = array(
 		'SortOrder' => 'Int',
-		'Title' => 'Varchar(255)',
+		'Title' => 'Text',
 		'Caption' => 'Varchar(255)',
 		'YouTubeID' => 'Varchar(255)',
 		'VimeoID' => 'Varchar(255)'
@@ -64,7 +79,7 @@ class CarouselItem extends DataObject
 	 * @config
 	 */
 	private static $has_one = array(
-		'ComponentsPage' => ComponentsPage::class,
+		'CarouselElement' => CarouselElement::class,
 		'Image' => Image::class,
 		'YouTubeImage' => Image::class,
 		'VimeoImage' => Image::class
@@ -86,7 +101,7 @@ class CarouselItem extends DataObject
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
-		$fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
+		$fields->removeFieldFromTab('Root.Main', 'CarouselElementID');
 		$fields->removeFieldFromTab('Root.Main', 'SortOrder');
 		$fields->removeFieldFromTab('Root.Main', 'Title');
 		$fields->removeFieldFromTab('Root.Main', 'Caption');
@@ -132,6 +147,7 @@ class CarouselItem extends DataObject
 				TextAreaField::create('Caption','Caption')
 			]
 		);
+
 		return $fields;
 	}
 

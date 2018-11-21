@@ -12,94 +12,93 @@ use Eklektos\Eklektos\PageType\HomePage;
 
 class SliderItem extends DataObject
 {
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $table_name = 'SliderItem';
 
-    /**
-     * @var string
-     * @config
-     */
-    private static $table_name = 'SliderItem';
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $default_sort = 'SortOrder';
 
-    /**
-     * @var string
-     * @config
-     */
-    private static $default_sort = 'SortOrder';
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $db = array(
+		'SortOrder' => 'Int',
+		'Title' => 'Varchar(255)',
+		'Caption' => 'Varchar(255)'
+	);
 
-    /**
-     * @var array
-     * @config
-     */
-    private static $db = array(
-        'SortOrder' => 'Int',
-        'Title' => 'Varchar(255)',
-        'Caption' => 'Varchar(255)'
-    );
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $has_one = array(
+		'ComponentsPage' => ComponentsPage::class,
+		'HomePage' => HomePage::class,
+		'Image' => Image::class
+	);
 
-    /**
-     * @var array
-     * @config
-     */
-    private static $has_one = array(
-        'ComponentsPage' => ComponentsPage::class,
-        'HomePage' => HomePage::class,
-        'Image' => Image::class
-    );
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $summary_fields = array(
+		'ImageThumb' => 'Image',
+		'Title' => 'Title',
+		'Caption' => 'Caption'
+	);
 
-    /**
-     * @var array
-     * @config
-     */
-    private static $summary_fields = array(
-        'ImageThumb' => 'Image',
-        'Title' => 'Title',
-        'Caption' => 'Caption'
-    );
+	/**
+	 * @return FieldList
+	 */
+	public function getCMSFields()
+	{
+		$fields = parent::getCMSFields();
+		$fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
+		$fields->removeFieldFromTab('Root.Main', 'HomePageID');
+		$fields->removeFieldFromTab('Root.Main', 'SortOrder');
+		$fields->removeFieldFromTab('Root.Main', 'Title');
+		$fields->removeFieldFromTab('Root.Main', 'Caption');
+		$fields->removeFieldFromTab('Root.Main', 'Heading');
+		$fields->addFieldsToTab(
+			'Root.Main',
+			[
+				UploadField::create('Image', 'Slider Image')
+					->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
+					->setAllowedFileCategories('image')
+					->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
+					->setFolderName('SliderImages'),
+				TextField::create('Title','Title'),
+				TextAreaField::create('Caption','Caption')
+			]
+		);
+		return $fields;
+	}
 
-    /**
-     * @return FieldList
-     */
-    public function getCMSFields()
-    {
-        $fields = parent::getCMSFields();
-        $fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
-        $fields->removeFieldFromTab('Root.Main', 'HomePageID');
-        $fields->removeFieldFromTab('Root.Main', 'SortOrder');
-        $fields->removeFieldFromTab('Root.Main', 'Title');
-        $fields->removeFieldFromTab('Root.Main', 'Caption');
-        $fields->removeFieldFromTab('Root.Main', 'Heading');
-        $fields->addFieldsToTab(
-            'Root.Main',
-            [
-                UploadField::create('Image', 'Slider Image')
-                    ->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
-                    ->setAllowedFileCategories('image')
-                    ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-                    ->setFolderName('SliderImages'),
-                TextField::create('Title','Title'),
-                TextAreaField::create('Caption','Caption')
-            ]
-        );
-        return $fields;
-    }
+	/**
+	 * @return image
+	 */
+	public function getImageThumb()
+	{
+		if($this->Image()->exists()) {
+			return $this->Image()->ScaleWidth(100);
+		}
 
-    /**
-     * @return image
-     */
-    public function getImageThumb()
-    {
-        if($this->Image()->exists()) {
-            return $this->Image()->ScaleWidth(100);
-        }
+		return "(No image)";
+	}
 
-        return "(No image)";
-    }
-
-    /**
-     * @return string
-     */
-    public function onAfterWrite()
-    {
-        $this->Image()->publishSingle();
-    }
+	/**
+	 * @return string
+	 */
+	public function onAfterWrite()
+	{
+		$this->Image()->publishSingle();
+	}
 
 }

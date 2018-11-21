@@ -3,19 +3,40 @@
 namespace Eklektos\Eklektos\Model;
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextAreaField;
-use Eklektos\Eklektos\PageType\ComponentsPage;
+use Eklektos\Eklektos\Element\SliderElement;
 
-class GalleryItem extends DataObject
+class SliderElementItem extends DataObject
 {
 	/**
 	 * @var string
 	 * @config
 	 */
-	private static $table_name = 'GalleryItem';
+	private static $table_name = 'SliderElementItem';
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $default_sort = 'SortOrder';
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $versioned_gridfield_extensions = true;
+
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $extensions = array(
+		Versioned::class
+	);
 
 	/**
 	 * @var array
@@ -32,7 +53,7 @@ class GalleryItem extends DataObject
 	 * @config
 	 */
 	private static $has_one = array(
-		'ComponentsPage' => ComponentsPage::class,
+		'SliderElement' => SliderElement::class,
 		'Image' => Image::class
 	);
 
@@ -52,26 +73,20 @@ class GalleryItem extends DataObject
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
-
-		$fields->removeFieldFromTab('Root.Main', 'ComponentsPageID');
 		$fields->removeFieldFromTab('Root.Main', 'SortOrder');
-		$fields->removeFieldFromTab('Root.Main', 'Title');
-		$fields->removeFieldFromTab('Root.Main', 'Caption');
-		$fields->removeFieldFromTab('Root.Main', 'Heading');
-
+		$fields->removeFieldFromTab('Root.Main', 'SliderElementID');
 		$fields->addFieldsToTab(
 			'Root.Main',
 			[
-				UploadField::create('Image', 'Gallery Image')
-					->setDescription('Image size: 800 x 600')
+				UploadField::create('Image', 'Slider Image')
+					->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
 					->setAllowedFileCategories('image')
 					->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-					->setFolderName('GalleryImages'),
+					->setFolderName('SliderImages'),
 				TextField::create('Title','Title'),
 				TextAreaField::create('Caption','Caption')
 			]
 		);
-
 		return $fields;
 	}
 

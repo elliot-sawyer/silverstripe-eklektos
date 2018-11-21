@@ -1,3 +1,6 @@
+<% if $ShowTitle %>
+  <h2 class="list-element__title">$Title</h2>
+<% end_if %>
 <div id="accordion" class="mb-5" role="tablist">
   <% loop $Accordion %>
   <div class="card">

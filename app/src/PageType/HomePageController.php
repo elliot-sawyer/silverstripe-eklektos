@@ -8,8 +8,8 @@ use SilverStripe\Blog\Model\BlogPost;
 
 class HomePageController extends PageController
 {
-    public function BlogPosts() {
-        $posts = BlogPost::get();
-        return $posts;
-    }
+	public function BlogPosts() {
+		$posts = BlogPost::get();
+		return $posts;
+	}
 }
