@@ -9,6 +9,8 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use	SilverStripe\AssetAdmin\Forms\UploadField;
+use	SilverStripe\Assets\Image;
 
 class CustomSiteConfig extends DataExtension
 {
@@ -25,7 +27,15 @@ class CustomSiteConfig extends DataExtension
 		'SiteLinkedin' => 'Text',
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
-		'SiteVimeo' => 'Text'
+		'SiteVimeo' => 'Text',
+		'SiteNavigation' => 'Varchar(255)'
+	);
+
+	/**
+	 * @var array
+	 */
+	private static $has_one = array(
+		'SiteLogo' => Image::class
 	);
 
 	/**
@@ -34,27 +44,47 @@ class CustomSiteConfig extends DataExtension
 	public function updateCMSFields(FieldList $fields)
 	{
 
+		$fields->addFieldsToTab('Root.Main', array(
+			UploadField::create('SiteLogo', 'Logo')
+				->setDescription('Logo, dimensions of 280x95 to appear in the top left.')
+				->setAllowedExtensions(array('jpg','jpeg','png','gif'))
+		));
+
 		$fields->addFieldsToTab('Root.Alerts', [
-			CheckboxField::create('CustAlertToggle', 'Show Customer Alert?'),
-			TextField::create('CustAlertTitle', 'Title'),
+			CheckboxField::create('AlertToggle', 'Show Customer Alert?'),
+			TextField::create('AlertTitle', 'Title'),
 			DropdownField::create(
 				'AlertType',
 				'Alert type',
 				[
-					'Primary' => 'Primary',
-					'Secondary' => 'Secondary',
-					'Success' => 'Success',
-					'Danger' => 'Danger',
-					'Warning' => 'Warning',
-					'Info' => 'Info',
-					'Light' => 'Light',
-					'Dark' => 'Dark'
+					'primary' => 'Primary',
+					'secondary' => 'Secondary',
+					'success' => 'Success',
+					'danger' => 'Danger',
+					'warning' => 'Warning',
+					'info' => 'Info',
+					'light' => 'Light',
+					'dark' => 'Dark'
 				],
-				'Primary'
+				'primary'
 			),
-			HTMLEditorField::create('CustAlertBody', 'Body text')
+			HTMLEditorField::create('AlertBody', 'Body text')
 				->setRows(10)
 		]);
+
+		$fields->addFieldsToTab('Root.Main', array(
+			DropdownField::create(
+				'SiteNavigation',
+				'Navigation',
+				[
+					'Left' => 'Left',
+					'Justified' => 'Justified',
+					'Right' => 'Right',
+					'Megamenu' => 'Megamenu'
+				],
+				'Left'
+			)->setDescription('Style of the main site navigation.')
+		));
 
 		$fields->addFieldsToTab('Root.SocialMedia', array(
 			TextField::create('SiteFacebook', 'Facebook')
@@ -71,6 +101,14 @@ class CustomSiteConfig extends DataExtension
 				->setDescription('e.g. https://www.vimeo.com/876543 where 876543 is your Vimeo page')
 		));
 
+	}
+
+	public function onBeforeWrite()
+	{
+		if($this->owner->SiteLogo() && $this->owner->SiteLogo()->exists()) {
+			$this->owner->SiteLogo()->publishSingle();
+		}
+		parent::onBeforeWrite();
 	}
 
 }

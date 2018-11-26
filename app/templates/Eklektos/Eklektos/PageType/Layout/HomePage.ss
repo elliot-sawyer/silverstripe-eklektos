@@ -1,4 +1,26 @@
 <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none" data-ride="carousel">
+  <div class="carousel-overlay">
+    <div class="container">
+      <% if $SiteConfig.AlertToggle %>
+        <% with $SiteConfig %>
+          <div class="alert alert-$AlertType alert-dismissible fade show" role="alert">
+            <strong>$AlertTitle</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end_with %>
+      <% end_if %>
+      <div class="popular-links">
+        <h5 class="popular-links-heading">Popular links</h5>
+          <ul>
+          <% loop $PopularLinks %>
+            <li><a href="$Link">$Title</a></li>
+          <% end_loop %>
+        </ul>
+      </div>
+    </div>
+  </div>
   <% if $SliderIndicators == 1 %>
   <ol class="carousel-indicators">
     <% loop $SliderItems %>
@@ -6,16 +28,6 @@
     <% end_loop %>
   </ol>
   <% end_if %>
-  <div class="container">
-    <div class="popular-links">
-      <h5 class="popular-links-heading">Popular links</h5>
-      <ul>
-      <% loop $PopularLinks %>
-        <li><a href="$Link">$Title</a></li>
-      <% end_loop %>
-      </ul>
-    </div>
-  </div>
   <div class="carousel-inner" role="listbox">
   <% loop $SliderItems %>
     <div class="carousel-item <% if $First %>active<% end_if %>">

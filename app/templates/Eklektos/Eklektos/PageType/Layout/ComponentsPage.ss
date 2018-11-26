@@ -154,6 +154,7 @@
           Social media icons<br/>
           Masonary<br/>
           Landing Page<br/>
+          Select 2 boxes
         </div>
       </div>
     </div>
