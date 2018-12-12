@@ -9,8 +9,12 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use	SilverStripe\AssetAdmin\Forms\UploadField;
-use	SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use Eklektos\Eklektos\Model\HeaderContactDetail;
 
 class CustomSiteConfig extends DataExtension
 {
@@ -36,6 +40,14 @@ class CustomSiteConfig extends DataExtension
 	 */
 	private static $has_one = array(
 		'SiteLogo' => Image::class
+	);
+
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $has_many = array(
+		'HeaderContactDetail' => HeaderContactDetail::class
 	);
 
 	/**
@@ -84,6 +96,16 @@ class CustomSiteConfig extends DataExtension
 				],
 				'Left'
 			)->setDescription('Style of the main site navigation.')
+		));
+
+		$fields->addFieldsToTab('Root.Header', array(
+			GridField::create(
+				'HeaderContactDetail',
+				'Contact detail',
+				$this->owner->HeaderContactDetail(),
+				GridFieldConfig_RecordEditor::create()
+				->addComponent(new GridFieldSortableRows('SortOrder'))
+			)
 		));
 
 		$fields->addFieldsToTab('Root.SocialMedia', array(

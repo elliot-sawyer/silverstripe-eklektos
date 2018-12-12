@@ -154,7 +154,8 @@
           Social media icons<br/>
           Masonary<br/>
           Landing Page<br/>
-          Select 2 boxes
+          Select 2 boxes<br/>
+          File types (pdf, doc etc)
         </div>
       </div>
     </div>
