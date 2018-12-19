@@ -7,7 +7,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\Forms\DropdownField;
-use	Eklektos\Eklektos\Model\CarouselElementItem;
+use Eklektos\Eklektos\Model\CarouselElementItem;
 
 class CarouselElement extends BaseElement
 {

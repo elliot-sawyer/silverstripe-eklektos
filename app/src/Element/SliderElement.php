@@ -6,7 +6,7 @@ use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
-use	Eklektos\Eklektos\Model\SliderElementItem;
+use Eklektos\Eklektos\Model\SliderElementItem;
 
 class SliderElement extends BaseElement
 {

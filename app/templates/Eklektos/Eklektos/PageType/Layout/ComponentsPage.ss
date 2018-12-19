@@ -155,7 +155,8 @@
           Masonary<br/>
           Landing Page<br/>
           Select 2 boxes<br/>
-          File types (pdf, doc etc)
+          File types (pdf, doc etc)<br/>
+          Iframe page<br/>
         </div>
       </div>
     </div>

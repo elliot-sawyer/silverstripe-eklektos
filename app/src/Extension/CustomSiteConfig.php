@@ -15,6 +15,12 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use Eklektos\Eklektos\Model\HeaderContactDetail;
+use Eklektos\Eklektos\Model\FooterLink;
+use Eklektos\Eklektos\Model\FooterLinkColumnOne;
+use Eklektos\Eklektos\Model\FooterLinkColumnTwo;
+use Eklektos\Eklektos\Model\FooterLinkColumnThree;
+use Eklektos\Eklektos\Model\FooterLinkColumnFour;
+use SilverStripe\Forms\ToggleCompositeField;
 
 class CustomSiteConfig extends DataExtension
 {
@@ -22,6 +28,7 @@ class CustomSiteConfig extends DataExtension
 	 * @var array
 	 */
 	private static $db = array(
+		'GACode' => 'Varchar(16)',
 		'AlertTitle' => 'Varchar(32)',
 		'AlertType' => 'Varchar(255)',
 		'AlertBody' => 'HTMLText',
@@ -32,7 +39,11 @@ class CustomSiteConfig extends DataExtension
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
 		'SiteVimeo' => 'Text',
-		'SiteNavigation' => 'Varchar(255)'
+		'SiteNavigation' => 'Varchar(255)',
+		'ColumnOneHeading' => 'Text',
+		'ColumnTwoHeading' => 'Text',
+		'ColumnThreeHeading' => 'Text',
+		'ColumnFourHeading' => 'Text'
 	);
 
 	/**
@@ -47,7 +58,12 @@ class CustomSiteConfig extends DataExtension
 	 * @config
 	 */
 	private static $has_many = array(
-		'HeaderContactDetail' => HeaderContactDetail::class
+		'HeaderContactDetail' => HeaderContactDetail::class,
+		'FooterLink' => FooterLink::class,
+		'FooterLinkColumnOne' => FooterLinkColumnOne::class,
+		'FooterLinkColumnTwo' => FooterLinkColumnTwo::class,
+		'FooterLinkColumnThree' => FooterLinkColumnThree::class,
+		'FooterLinkColumnFour' => FooterLinkColumnFour::class
 	);
 
 	/**
@@ -55,6 +71,10 @@ class CustomSiteConfig extends DataExtension
 	 */
 	public function updateCMSFields(FieldList $fields)
 	{
+		$fields->addFieldsToTab('Root.Main', array(
+			TextField::create('GACode', 'Google Analytics account')
+				->setDescription('Account number to be used all across the site (in the format <strong>UA-XXXXX-X</strong>)')
+		));
 
 		$fields->addFieldsToTab('Root.Main', array(
 			UploadField::create('SiteLogo', 'Logo')
@@ -108,13 +128,84 @@ class CustomSiteConfig extends DataExtension
 			)
 		));
 
+		$fields->addFieldToTab('Root.Footer',
+			ToggleCompositeField::create('ColumnOneToggle', 'Column One',
+			array(
+				TextField::create('ColumnOneHeading', 'Heading'),
+				GridField::create(
+					'FooterLinkColumnOne',
+					'',
+					$this->owner->FooterLinkColumnOne(),
+					GridFieldConfig_RecordEditor::create()
+					->addComponent(new GridFieldSortableRows('SortOrder'))
+				)
+			)
+		));
+
+		$fields->addFieldToTab('Root.Footer',
+			ToggleCompositeField::create('ColumnTwoToggle', 'Column Two',
+			array(
+				TextField::create('ColumnTwoHeading', 'Heading'),
+				GridField::create(
+					'FooterLinkColumnTwo',
+					'',
+					$this->owner->FooterLinkColumnTwo(),
+					GridFieldConfig_RecordEditor::create()
+					->addComponent(new GridFieldSortableRows('SortOrder'))
+				)
+			)
+		));
+
+		$fields->addFieldToTab('Root.Footer',
+			ToggleCompositeField::create('ColumnThreeToggle', 'Column Three',
+			array(
+				TextField::create('ColumnThreeHeading', 'Heading'),
+				GridField::create(
+					'FooterLinkColumnThree',
+					'',
+					$this->owner->FooterLinkColumnThree(),
+					GridFieldConfig_RecordEditor::create()
+					->addComponent(new GridFieldSortableRows('SortOrder'))
+				)
+			)
+		));
+
+		$fields->addFieldToTab('Root.Footer',
+			ToggleCompositeField::create('ColumnFourToggle', 'Column Four',
+			array(
+				TextField::create('ColumnFourHeading', 'Heading'),
+				GridField::create(
+					'FooterLinkColumnFour',
+					'',
+					$this->owner->FooterLinkColumnFour(),
+					GridFieldConfig_RecordEditor::create()
+					->addComponent(new GridFieldSortableRows('SortOrder'))
+				)
+			)
+		));
+
+		$fields->addFieldToTab('Root.Footer',
+			ToggleCompositeField::create('BottomLeftToggle', 'Footer Navigation Links',
+			array(
+				GridField::create(
+					'FooterLink',
+					'Bottom footer links',
+					$this->owner->FooterLink(),
+					GridFieldConfig_RecordEditor::create()
+					->addComponent(new GridFieldSortableRows('SortOrder'))
+				)
+			)
+		));
+
 		$fields->addFieldsToTab('Root.SocialMedia', array(
 			TextField::create('SiteFacebook', 'Facebook')
-				->setDescription('e.g. https://www.facebook.com/467371 where 467371 is your Facebook page'),
+				->setDescription('Facebook link (everything after the "https://facebook.com/", eg https://facebook.com/username or http://facebook.com/pages/108510539573)'),
 			TextField::create('SiteTwitter', 'Twitter')
-				->setDescription('e.g. https://twitter.com/431465 where 431465 is your Twitter page'),
+				->setDescription('Twitter username (eg, http://twitter.com/<b>username</b>)'),
 			TextField::create('SiteLinkedin', 'Linked In')
 				->setDescription('e.g. https://www.linkedin.com/231451 where 231451 is your Linked In page'),
+			TextField::create('SiteGooglePlus', 'Google Plus')
+				->setDescription('e.g. https://plus.google.com/<b>username</b>'),
 			TextField::create('SiteInstagram', 'Instagram')
 				->setDescription('e.g. https://www.instagram.com/423561 where 423561 is your Instagram page'),
 			TextField::create('SiteYoutube', 'Youtube')

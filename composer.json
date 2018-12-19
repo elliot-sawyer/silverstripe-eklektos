@@ -4,18 +4,17 @@
     "description": "The SilverStripe Framework Installer",
     "require": {
         "php": ">=5.6.0",
-        "silverstripe/recipe-cms": "4.2.1@stable",
+        "silverstripe/recipe-cms": "4.4.x-dev",
         "soulroll/silverstripe-bootstarter": "dev-master",
-        "dnadesign/silverstripe-elemental": "3.0.x-dev",
-        "dnadesign/silverstripe-elemental-userforms": "^2.0",
-        "dnadesign/silverstripe-elemental-list": "^1.1",
-        "silverstripe/elemental-fileblock": "1.x-dev",
+        "dnadesign/silverstripe-elemental": "^4",
+        "dnadesign/silverstripe-elemental-userforms": "3.0.0-beta1",
+        "silverstripe/elemental-fileblock": "^2.0",
+        "silverstripe/elemental-bannerblock": "^2.0",
         "silverstripe/userforms": "^5.2",
         "silverstripe/spamprotection": "^3.0",
         "undefinedoffset/silverstripe-nocaptcha": "^2.0",
         "silverstripe/blog": "^3.2",
-        "silverstripe/elemental-bannerblock": "1.x-dev",
-        "heyday/silverstripe-responsive-images": "^2.0",
+        "heyday/silverstripe-responsive-images": "^2.0.4",
         "silverstripe/display-logic": "^2.0",
         "undefinedoffset/sortablegridfield": "^2.0"
     },
@@ -57,17 +56,5 @@
         "process-timeout": 600
     },
     "prefer-stable": true,
-    "minimum-stability": "dev",
-    "scripts": {
-        "post-update-cmd": [
-            "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && gulp build",
-            "composer vendor-expose"
-        ],
-        "post-install-cmd": [
-            "# Update frontend changes",
-            "cd themes/silverstripe-bootstarter && npm install && gulp build",
-            "composer vendor-expose"
-        ]
-    }
+    "minimum-stability": "dev"
 }
