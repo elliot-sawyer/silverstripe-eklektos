@@ -5,19 +5,18 @@ namespace Eklektos\Eklektos\Model;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TreeDropdownField;
+use Eklektos\Eklektos\Model\FooterColumn;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\SiteConfig\SiteConfig;
 
-class FooterLinkColumnFour extends DataObject
+class FooterColumnLink extends DataObject
 {
 
 	/**
 	 * @var string
 	 * @config
 	 */
-	private static $table_name = 'FooterLinkColumnFour';
+	private static $table_name = 'FooterColumnLink';
 
 	/**
 	 * @var string
@@ -39,7 +38,7 @@ class FooterLinkColumnFour extends DataObject
 	 * @config
 	 */
 	private static $has_one = array (
-		'SiteConfig' => SiteConfig::class,
+		'FooterColumn' => FooterColumn::class,
 		'PageLink'  => SiteTree::class
 	);
 

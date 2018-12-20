@@ -5,19 +5,20 @@ namespace Eklektos\Eklektos\Model;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TreeDropdownField;
-use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
-class FooterLinkColumnOne extends DataObject
+class FooterColumn extends DataObject
 {
 
 	/**
 	 * @var string
 	 * @config
 	 */
-	private static $table_name = 'FooterLinkColumnOne';
+	private static $table_name = 'FooterColumn';
 
 	/**
 	 * @var string
@@ -39,8 +40,15 @@ class FooterLinkColumnOne extends DataObject
 	 * @config
 	 */
 	private static $has_one = array (
-		'SiteConfig' => SiteConfig::class,
-		'PageLink'  => SiteTree::class
+		'SiteConfig' => SiteConfig::class
+	);
+
+	/**
+	 * @var array
+	 * @config
+	 */
+	private static $has_many = array (
+		'FooterColumnLink'  => FooterColumnLink::class
 	);
 
 	/**
@@ -49,19 +57,21 @@ class FooterLinkColumnOne extends DataObject
 	 */
 	private static $summary_fields = array (
 		'Title' => 'Title',
-		'PageLink.Title' => 'Link'
 	);
 
 	/**
 	 * @return FieldList
 	 */
 	public function getCMSFields() {
+
 		$fields = new FieldList(
 			TextField::create('Title', 'Title'),
-			TreeDropdownField::create(
-				'PageLinkID',
-				'What page does this link to?',
-				SiteTree::class
+			GridField::create(
+				'FooterColumnLink',
+				'Footer column link',
+				$this->owner->FooterColumnLink(),
+				GridFieldConfig_RecordEditor::create()
+				->addComponent(new GridFieldSortableRows('SortOrder'))
 			)
 		);
 		return $fields;

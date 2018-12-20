@@ -15,11 +15,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use Eklektos\Eklektos\Model\HeaderContactDetail;
-use Eklektos\Eklektos\Model\FooterLink;
-use Eklektos\Eklektos\Model\FooterLinkColumnOne;
-use Eklektos\Eklektos\Model\FooterLinkColumnTwo;
-use Eklektos\Eklektos\Model\FooterLinkColumnThree;
-use Eklektos\Eklektos\Model\FooterLinkColumnFour;
+use Eklektos\Eklektos\Model\FooterColumn;
 use SilverStripe\Forms\ToggleCompositeField;
 
 class CustomSiteConfig extends DataExtension
@@ -39,11 +35,7 @@ class CustomSiteConfig extends DataExtension
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
 		'SiteVimeo' => 'Text',
-		'SiteNavigation' => 'Varchar(255)',
-		'ColumnOneHeading' => 'Text',
-		'ColumnTwoHeading' => 'Text',
-		'ColumnThreeHeading' => 'Text',
-		'ColumnFourHeading' => 'Text'
+		'SiteNavigation' => 'Varchar(255)'
 	);
 
 	/**
@@ -59,11 +51,7 @@ class CustomSiteConfig extends DataExtension
 	 */
 	private static $has_many = array(
 		'HeaderContactDetail' => HeaderContactDetail::class,
-		'FooterLink' => FooterLink::class,
-		'FooterLinkColumnOne' => FooterLinkColumnOne::class,
-		'FooterLinkColumnTwo' => FooterLinkColumnTwo::class,
-		'FooterLinkColumnThree' => FooterLinkColumnThree::class,
-		'FooterLinkColumnFour' => FooterLinkColumnFour::class
+		'FooterColumn' => FooterColumn::class
 	);
 
 	/**
@@ -128,72 +116,13 @@ class CustomSiteConfig extends DataExtension
 			)
 		));
 
-		$fields->addFieldToTab('Root.Footer',
-			ToggleCompositeField::create('ColumnOneToggle', 'Column One',
-			array(
-				TextField::create('ColumnOneHeading', 'Heading'),
-				GridField::create(
-					'FooterLinkColumnOne',
-					'',
-					$this->owner->FooterLinkColumnOne(),
-					GridFieldConfig_RecordEditor::create()
-					->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
-			)
-		));
-
-		$fields->addFieldToTab('Root.Footer',
-			ToggleCompositeField::create('ColumnTwoToggle', 'Column Two',
-			array(
-				TextField::create('ColumnTwoHeading', 'Heading'),
-				GridField::create(
-					'FooterLinkColumnTwo',
-					'',
-					$this->owner->FooterLinkColumnTwo(),
-					GridFieldConfig_RecordEditor::create()
-					->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
-			)
-		));
-
-		$fields->addFieldToTab('Root.Footer',
-			ToggleCompositeField::create('ColumnThreeToggle', 'Column Three',
-			array(
-				TextField::create('ColumnThreeHeading', 'Heading'),
-				GridField::create(
-					'FooterLinkColumnThree',
-					'',
-					$this->owner->FooterLinkColumnThree(),
-					GridFieldConfig_RecordEditor::create()
-					->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
-			)
-		));
-
-		$fields->addFieldToTab('Root.Footer',
-			ToggleCompositeField::create('ColumnFourToggle', 'Column Four',
-			array(
-				TextField::create('ColumnFourHeading', 'Heading'),
-				GridField::create(
-					'FooterLinkColumnFour',
-					'',
-					$this->owner->FooterLinkColumnFour(),
-					GridFieldConfig_RecordEditor::create()
-					->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
-			)
-		));
-
-		$fields->addFieldToTab('Root.Footer',
-			ToggleCompositeField::create('BottomLeftToggle', 'Footer Navigation Links',
-			array(
-				GridField::create(
-					'FooterLink',
-					'Bottom footer links',
-					$this->owner->FooterLink(),
-					GridFieldConfig_RecordEditor::create()
-					->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
+		$fields->addFieldsToTab('Root.Footer', array(
+			GridField::create(
+				'FooterColumn',
+				'Footer column',
+				$this->owner->FooterColumn(),
+				GridFieldConfig_RecordEditor::create()
+				->addComponent(new GridFieldSortableRows('SortOrder'))
 			)
 		));
 
