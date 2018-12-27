@@ -16,7 +16,9 @@
         "silverstripe/blog": "^3.2",
         "heyday/silverstripe-responsive-images": "^2.0.4",
         "silverstripe/display-logic": "^2.0",
-        "undefinedoffset/sortablegridfield": "^2.0"
+        "undefinedoffset/sortablegridfield": "^2.0",
+        "silverstripe/versioned-admin": "^1.1",
+        "symbiote/silverstripe-gridfieldextensions": "^3"
     },
     "repositories": [
         {

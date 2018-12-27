@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "67127cc066a543ffceccc873f59d5eba",
+    "content-hash": "0835548cfb2c252fe1f97dd51c11e6d5",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -851,16 +851,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.1.0",
+            "version": "v4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0"
+                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/d0230c5c77a7e3cfa69446febf340978540958c0",
-                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
+                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
                 "shasum": ""
             },
             "require": {
@@ -898,7 +898,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-10-10T09:24:14+00:00"
+            "time": "2018-12-26T11:32:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3552,45 +3552,6 @@
     ],
     "packages-dev": [
         {
-            "name": "dnadesign/silverstripe-elemental-subsites",
-            "version": "3.0.0-beta1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dnadesign/silverstripe-elemental-subsites.git",
-                "reference": "2e4778184059d8d6d64bb3786bfa2cc49b319a87"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dnadesign/silverstripe-elemental-subsites/zipball/2e4778184059d8d6d64bb3786bfa2cc49b319a87",
-                "reference": "2e4778184059d8d6d64bb3786bfa2cc49b319a87",
-                "shasum": ""
-            },
-            "require": {
-                "dnadesign/silverstripe-elemental": "^4.0@dev",
-                "silverstripe/subsites": "^2.0"
-            },
-            "type": "silverstripe-vendormodule",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "John Milmine",
-                    "email": "john.milmine@dna.co.nz"
-                }
-            ],
-            "description": "Adds subsite support to elements",
-            "keywords": [
-                "Content Blocks",
-                "element",
-                "elemental",
-                "silverstripe",
-                "subsites"
-            ],
-            "time": "2018-11-07T12:04:43+00:00"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
             "source": {
@@ -4811,78 +4772,22 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "silverstripe/subsites",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "ce9dd1a856e64ee65483de06b0ae8a3122a38fd4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/ce9dd1a856e64ee65483de06b0ae8a3122a38fd4",
-                "reference": "ce9dd1a856e64ee65483de06b0ae8a3122a38fd4",
-                "shasum": ""
-            },
-            "require": {
-                "silverstripe/admin": "^1",
-                "silverstripe/asset-admin": "^1",
-                "silverstripe/cms": "^4",
-                "silverstripe/errorpage": "^1",
-                "silverstripe/framework": "^4",
-                "silverstripe/versioned": "^1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "silverstripe-vendormodule",
-            "extra": {
-                "expose": [
-                    "javascript",
-                    "css"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "SilverStripe\\Subsites\\": "src/",
-                    "SilverStripe\\Subsites\\Tests\\": "tests/php/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sam Minnee",
-                    "email": "sam@silverstripe.com"
-                }
-            ],
-            "description": "Run multiple sites from a single SilverStripe install.",
-            "keywords": [
-                "multisite",
-                "silverstripe",
-                "subsites"
-            ],
-            "time": "2018-11-07T23:26:59+00:00"
-        },
-        {
             "name": "webmozart/assert",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/83e253c8e0be5b0257b881e1827274667c5c17a9",
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^5.3.3 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.6",
@@ -4915,7 +4820,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2018-01-29T19:49:41+00:00"
+            "time": "2018-12-25T11:19:39+00:00"
         }
     ],
     "aliases": [],
