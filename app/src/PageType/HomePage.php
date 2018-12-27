@@ -12,6 +12,9 @@ use Eklektos\Eklektos\Model\CardItem;
 
 class HomePage extends Page
 {
+
+	private static $icon = 'app/icons/home.png';
+
 	/**
 	 * @var string
 	 * @config

@@ -29,6 +29,9 @@
         "phpunit/phpunit": "^5.7"
     },
     "extra": {
+        "expose": [
+            "app/icons"
+        ],
         "project-files": [
             "app/_config/*",
             ".env.example"

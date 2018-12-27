@@ -11,6 +11,7 @@
           </div>
         <% end_with %>
       <% end_if %>
+      <% if $PopularLinks %>
       <div class="popular-links">
         <h5 class="popular-links-heading">Popular links</h5>
           <ul>
@@ -19,6 +20,7 @@
           <% end_loop %>
         </ul>
       </div>
+      <% end_if %>
     </div>
   </div>
   <% if $SliderIndicators == 1 %>
@@ -52,7 +54,11 @@
 </div>
 <div class="container mt-5 mb-5">
   <div class="row">
+    <% if $BlogPosts %>
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <% else %>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <% end_if %>
       <div class="row">
       <% loop $CardItems %>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
@@ -82,6 +88,7 @@
       <% end_loop %>
       </div>
     </div>
+    <% if $BlogPosts %>
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <h2 class="news-heading">News</h2>
       <% loop BlogPosts %>
@@ -91,5 +98,6 @@
         </div>
       <% end_loop %>
     </div>
+    <% end_if %>
   </div>
 </div>

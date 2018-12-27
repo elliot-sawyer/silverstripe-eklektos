@@ -15,7 +15,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use Eklektos\Eklektos\Model\HeaderContactDetail;
-use Eklektos\Eklektos\Model\FooterColumn;
+use Eklektos\Eklektos\Model\FooterLink;
 use SilverStripe\Forms\ToggleCompositeField;
 
 class CustomSiteConfig extends DataExtension
@@ -31,6 +31,7 @@ class CustomSiteConfig extends DataExtension
 		'AlertToggle' => 'Boolean',
 		'SiteFacebook' => 'Text',
 		'SiteTwitter' => 'Text',
+		'SiteGooglePlus' => 'Text',
 		'SiteLinkedin' => 'Text',
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
@@ -51,7 +52,7 @@ class CustomSiteConfig extends DataExtension
 	 */
 	private static $has_many = array(
 		'HeaderContactDetail' => HeaderContactDetail::class,
-		'FooterColumn' => FooterColumn::class
+		'FooterLink' => FooterLink::class
 	);
 
 	/**
@@ -118,9 +119,9 @@ class CustomSiteConfig extends DataExtension
 
 		$fields->addFieldsToTab('Root.Footer', array(
 			GridField::create(
-				'FooterColumn',
-				'Footer column',
-				$this->owner->FooterColumn(),
+				'FooterLink',
+				'Footer link',
+				$this->owner->FooterLink(),
 				GridFieldConfig_RecordEditor::create()
 				->addComponent(new GridFieldSortableRows('SortOrder'))
 			)
