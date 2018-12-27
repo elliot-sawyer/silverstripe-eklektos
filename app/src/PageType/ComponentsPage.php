@@ -15,6 +15,13 @@ use Eklektos\Eklektos\Model\CardItem;
 
 class ComponentsPage extends Page
 {
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $icon = 'app/icons/components_page.png';
+
 	/**
 	 * @var string
 	 * @config

@@ -5,6 +5,7 @@
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <h2>Slider</h2>
+          <% if SliderItems %>
           <div id="carousel" class="carousel carousel-fade slide bg-inverse d-print-none mb-5" data-ride="carousel">
             <% if $SliderIndicators == 1 %>
             <ol class="carousel-indicators">
@@ -35,7 +36,9 @@
             </a>
             <% end_if %>
           </div>
+          <% end_if %>
           <h2>Carousel</h2>
+          <% if CarouselItems %>
           <div class="slick-carousel-container">
             <span class="slick-carousel-arrow-left"></span>
             <span class="slick-carousel-arrow-right"></span>
@@ -66,6 +69,7 @@
             <% end_loop %>
             </div>
           </div>
+          <% end_if %>
           <h2>Gallery</h2>
           <% if $GalleryItems %>
             <div class="row">
@@ -93,6 +97,7 @@
             </div>
           <% end_if %>
           <h2>Accordion</h2>
+          <% if AccordionItems %>
           <div id="accordion" class="mb-5" role="tablist">
           <% loop $AccordionItems %>
             <div class="card">
@@ -109,6 +114,7 @@
             </div>
           <% end_loop %>
           </div>
+          <% end_if %>
           <h2>Cards</h2>
           <div class="row">
             <% loop $CardItems %>
