@@ -36,7 +36,8 @@ class CustomSiteConfig extends DataExtension
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
 		'SiteVimeo' => 'Text',
-		'SiteNavigation' => 'Varchar(255)'
+		'SiteNavigation' => 'Varchar(255)',
+		'SiteCopyright' => 'Text'
 	);
 
 	/**
@@ -105,6 +106,10 @@ class CustomSiteConfig extends DataExtension
 				],
 				'Left'
 			)->setDescription('Style of the main site navigation.')
+		));
+
+		$fields->addFieldsToTab('Root.Main', array(
+			TextField::create('SiteCopyright', 'Copyright')
 		));
 
 		$fields->addFieldsToTab('Root.Header', array(
