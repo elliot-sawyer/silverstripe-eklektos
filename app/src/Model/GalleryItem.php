@@ -66,7 +66,7 @@ class GalleryItem extends DataObject
 					->setDescription('Image size: 800 x 600')
 					->setAllowedFileCategories('image')
 					->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-					->setFolderName('GalleryImages'),
+					->setFolderName('Gallery Images'),
 				TextField::create('Title','Title'),
 				TextAreaField::create('Caption','Caption')
 			]

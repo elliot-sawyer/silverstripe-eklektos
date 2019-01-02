@@ -82,7 +82,7 @@ class SliderElementItem extends DataObject
 					->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
 					->setAllowedFileCategories('image')
 					->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-					->setFolderName('SliderImages'),
+					->setFolderName('Slider Images'),
 				TextField::create('Title','Title'),
 				TextAreaField::create('Caption','Caption')
 			]

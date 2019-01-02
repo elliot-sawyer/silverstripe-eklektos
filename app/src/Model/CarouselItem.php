@@ -107,7 +107,7 @@ class CarouselItem extends DataObject
 						->setDescription('Sizes: &nbsp;&nbsp; Full (2560 x 560) &nbsp;&nbsp;&nbsp; Boxed (1100 x 500) &nbsp;&nbsp;&nbsp; Half (634 x 300)')
 						->setAllowedFileCategories('image')
 						->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-						->setFolderName('CarouselImages')
+						->setFolderName('Carousel Images')
 				)->hideUnless('Type')->isEqualTo('ImageID')->end(),
 
 				Wrapper::create(
@@ -116,7 +116,7 @@ class CarouselItem extends DataObject
 					UploadField::create('YouTubeImage', 'YouTube Thumbnail Image')
 						->setAllowedFileCategories('image')
 						->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-						->setFolderName('CarouselImages')
+						->setFolderName('Carousel YouTube Images')
 				)->hideUnless('Type')->isEqualTo('YouTubeID')->end(),
 
 				Wrapper::create(
@@ -125,7 +125,7 @@ class CarouselItem extends DataObject
 					UploadField::create('VimeoImage', 'Vimeo Thumbnail Image')
 						->setAllowedFileCategories('image')
 						->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-						->setFolderName('CarouselImages')
+						->setFolderName('Carousel Vimeo Images')
 				)->hideUnless('Type')->isEqualTo('VimeoID')->end(),
 
 				TextField::create('Title','Title'),

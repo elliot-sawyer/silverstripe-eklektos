@@ -46,7 +46,6 @@
             <% loop $CarouselItems %>
               <div class="slick-slide">
               <% if $Image %>
-              <%--<a href="$Image.url" class="slick-slide-content slick-expand-indicator">--%>
               <a class="popup popup-image popup-indicator" href="$Image.url">
                 $Image
                 <% if $Title || $Caption %>

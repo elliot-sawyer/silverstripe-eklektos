@@ -78,7 +78,7 @@ class CardItem extends DataObject
 					->setDescription('Image size: 640 x 480')
 					->setAllowedFileCategories('image')
 					->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'))
-					->setFolderName('CardImages'),
+					->setFolderName('Card Images'),
 				TextField::create('Title','Title'),
 				TextAreaField::create('Content','Content'),
 				TreeDropdownField::create('InternalURLID', 'Page Link', SiteTree::class),
