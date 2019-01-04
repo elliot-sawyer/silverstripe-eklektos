@@ -4,3 +4,6 @@ Name: myextensions
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Eklektos\Eklektos\Extension\CustomSiteConfig
+SilverStripe\UserForms\Model\UserDefinedForm:
+  extensions:
+    - Eklektos\Eklektos\Extension\UserDefinedFormSidebar

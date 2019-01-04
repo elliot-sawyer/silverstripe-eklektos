@@ -17,6 +17,7 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use Eklektos\Eklektos\Model\HeaderContactDetail;
 use Eklektos\Eklektos\Model\FooterLink;
 use SilverStripe\Forms\ToggleCompositeField;
+use Heyday\ColorPalette\Fields\ColorPaletteField;
 
 class CustomSiteConfig extends DataExtension
 {
@@ -37,7 +38,8 @@ class CustomSiteConfig extends DataExtension
 		'SiteYoutube' => 'Text',
 		'SiteVimeo' => 'Text',
 		'SiteNavigation' => 'Varchar(255)',
-		'SiteCopyright' => 'Text'
+		'SiteCopyright' => 'Text',
+		'SiteColor' => 'Text'
 	);
 
 	/**
@@ -130,6 +132,23 @@ class CustomSiteConfig extends DataExtension
 				GridFieldConfig_RecordEditor::create()
 				->addComponent(new GridFieldSortableRows('SortOrder'))
 			)
+		));
+
+		$fields->addFieldsToTab('Root.Main', array(
+			ColorPaletteField::create('SiteColor','Theme colour',
+				array(
+					'theme-light-green' => '#558B2F',
+					'theme-green' => '#2E7D32',
+					'theme-blue' => '#0277BD',
+					'theme-navy' => '#002E4C',
+					'theme-teal' => '#00796b',
+					'theme-cyan' => '#00838f',
+					'theme-red' => '#e74c3c',
+					'theme-orange' => '#f7941e',
+					'theme-purple' => '#6A1B9A',
+					'theme-brown' => '#6D4C41'
+				)
+			),
 		));
 
 		$fields->addFieldsToTab('Root.SocialMedia', array(

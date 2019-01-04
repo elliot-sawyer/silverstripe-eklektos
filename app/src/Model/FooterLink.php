@@ -12,7 +12,6 @@ use SilverStripe\SiteConfig\SiteConfig;
 
 class FooterLink extends DataObject
 {
-
 	/**
 	 * @var string
 	 * @config

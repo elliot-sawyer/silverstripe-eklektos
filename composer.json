@@ -18,7 +18,8 @@
         "silverstripe/display-logic": "^2.0",
         "undefinedoffset/sortablegridfield": "^2.0",
         "silverstripe/versioned-admin": "^1.1",
-        "symbiote/silverstripe-gridfieldextensions": "^3"
+        "symbiote/silverstripe-gridfieldextensions": "^3",
+        "heyday/silverstripe-colorpalette": "^2.0.3"
     },
     "repositories": [
         {
