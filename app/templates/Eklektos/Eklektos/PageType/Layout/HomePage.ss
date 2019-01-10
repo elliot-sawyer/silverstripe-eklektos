@@ -74,7 +74,7 @@
               <h4 class="card-title">$Title</h4>
               <p class="card-text">$Content</p>
               <% if $Link %>
-                <a href="$Link">
+                <a href="$Link" class="btn btn-card-theme">
                 <% if $LinkTitle %>
                   $LinkTitle
                 <% else %>
