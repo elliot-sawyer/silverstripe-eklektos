@@ -8,7 +8,7 @@
             <div class="page-summary <% if $LandingPageSummaryImage %>with-image<% end_if %> mb-5">
               <a class="page-summary-image" href="$Link">
                 <% if LandingPageSummaryImage %>
-                  $LandingPageSummaryImage
+                  $LandingPageSummaryImage.Fit(140,140)
                 <% end_if %>
               </a>
               <a class="page-summary-title" href="$Link"><h3>$Title</h3></a>
