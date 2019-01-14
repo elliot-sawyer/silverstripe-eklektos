@@ -19,7 +19,8 @@
         "undefinedoffset/sortablegridfield": "^2.0",
         "silverstripe/versioned-admin": "^1.1",
         "symbiote/silverstripe-gridfieldextensions": "^3",
-        "heyday/silverstripe-colorpalette": "^2.0.3"
+        "heyday/silverstripe-colorpalette": "^2.0.3",
+        "silverstripe/taxonomy": "^2.0"
     },
     "repositories": [
         {
