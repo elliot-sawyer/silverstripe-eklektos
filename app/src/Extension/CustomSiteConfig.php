@@ -9,8 +9,6 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Assets\Image;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
@@ -18,6 +16,9 @@ use Eklektos\Eklektos\Model\HeaderContactDetail;
 use Eklektos\Eklektos\Model\FooterLink;
 use SilverStripe\Forms\ToggleCompositeField;
 use Heyday\ColorPalette\Fields\ColorPaletteField;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Image;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class CustomSiteConfig extends DataExtension
 {
@@ -46,7 +47,13 @@ class CustomSiteConfig extends DataExtension
 	 * @var array
 	 */
 	private static $has_one = array(
-		'SiteLogo' => Image::class
+		'SiteLogo' => Image::class,
+		'SiteRetinaLogo' => Image::class,
+		'FavIcon' => File::class,
+		'AppleTouchIcon144' => File::class,
+		'AppleTouchIcon114' => File::class,
+		'AppleTouchIcon72' => File::class,
+		'AppleTouchIcon57' => File::class
 	);
 
 	/**
@@ -56,6 +63,15 @@ class CustomSiteConfig extends DataExtension
 	private static $has_many = array(
 		'HeaderContactDetail' => HeaderContactDetail::class,
 		'FooterLink' => FooterLink::class
+	);
+
+	private static $owns = array(
+		'SiteLogo',
+		'FavIcon',
+		'AppleTouchIcon144',
+		'AppleTouchIcon114',
+		'AppleTouchIcon72',
+		'AppleTouchIcon57'
 	);
 
 	/**
@@ -72,6 +88,36 @@ class CustomSiteConfig extends DataExtension
 			UploadField::create('SiteLogo', 'Logo')
 				->setDescription('Logo, dimensions of 280x95 to appear in the top left.')
 				->setAllowedExtensions(array('jpg','jpeg','png','gif'))
+		));
+
+		$fields->addFieldsToTab('Root.Main', array(
+			UploadField::create('SiteLogoRetina', 'Logo Retina')
+				->setDescription('Recommended to be twice the height and width of the standard logo.')
+				->setAllowedExtensions(array('jpg','jpeg','png','gif'))
+		));
+
+		$fields->addFieldsToTab('Root.LogosIcons', array(
+			UploadField::create('FavIcon', 'Favicon')
+				->setDescription('Favicon, in .ico format, dimensions of 16x16, 32x32, or 48x48')
+				->setAllowedExtensions(array('ico'))
+		));
+
+		$fields->addFieldsToTab('Root.LogosIcons', array(
+			UploadField::create('AppleIconField144', 'AppleIconField144')
+				->setDescription('Apple Touch Web Clip and Windows 8 Tile Icon (dimensions of 144x144, PNG format)')
+				->setAllowedExtensions(array('png'))
+		));
+
+		$fields->addFieldsToTab('Root.LogosIcons', array(
+			UploadField::create('AppleIconField72', 'AppleIconField72')
+				->setDescription('Apple Touch Web Clip Icon (dimensions of 72x72, PNG format)')
+				->setAllowedExtensions(array('png'))
+		));
+
+		$fields->addFieldsToTab('Root.LogosIcons', array(
+			UploadField::create('AppleIconField57', 'AppleIconField57')
+				->setDescription('Apple Touch Web Clip Icon (dimensions of 57x57, PNG format)')
+				->setAllowedExtensions(array('png'))
 		));
 
 		$fields->addFieldsToTab('Root.Alerts', [
@@ -167,15 +213,17 @@ class CustomSiteConfig extends DataExtension
 			TextField::create('SiteVimeo', 'Vimeo')
 				->setDescription('e.g. https://www.vimeo.com/876543 where 876543 is your Vimeo page')
 		));
-
 	}
 
-	public function onBeforeWrite()
+	/**
+	 * Auto-publish any images attached to the SiteConfig object if it's not versioned. Versioned objects will
+	 * handle their related objects via the "owns" API by default.
+	 */
+	public function onAfterWrite()
 	{
-		if($this->owner->SiteLogo() && $this->owner->SiteLogo()->exists()) {
-			$this->owner->SiteLogo()->publishSingle();
+		if (!$this->owner->hasExtension(Versioned::class)) {
+			$this->owner->publishRecursive();
 		}
-		parent::onBeforeWrite();
 	}
 
 }
