@@ -5,6 +5,7 @@ namespace Eklektos\Eklektos\PageType;
 use Page;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\Forms\CheckboxField;
 use Eklektos\Eklektos\Model\SliderItem;
 use Eklektos\Eklektos\Model\PopularLink;
@@ -59,6 +60,7 @@ class HomePage extends Page
 					'Slider Items',
 					$this->SliderItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				),
 				CheckboxField::create('SliderArrows', 'Arrows'),
 				CheckboxField::create('SliderIndicators', 'Indicators')
@@ -73,6 +75,7 @@ class HomePage extends Page
 					'Popular Links',
 					$this->PopularLinks(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				)
 			)
 		);
@@ -85,6 +88,7 @@ class HomePage extends Page
 					'Card Items',
 					$this->CardItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				)
 			)
 		);

@@ -5,6 +5,7 @@ namespace Eklektos\Eklektos\PageType;
 use Page;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use Eklektos\Eklektos\Model\SliderItem;
@@ -68,6 +69,7 @@ class ComponentsPage extends Page
 					'Slider Items',
 					$this->SliderItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				),
 				CheckboxField::create('SliderArrows', 'Arrows'),
 				CheckboxField::create('SliderIndicators', 'Indicators')
@@ -82,6 +84,7 @@ class ComponentsPage extends Page
 					'Carousel Items',
 					$this->CarouselItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				),
 				DropdownField::create(
 					'CarouselColumns',
@@ -107,6 +110,7 @@ class ComponentsPage extends Page
 					'Gallery Items',
 					$this->GalleryItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				)
 			)
 		);
@@ -119,6 +123,7 @@ class ComponentsPage extends Page
 					'Accordion Items',
 					$this->AccordionItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				),
 				CheckboxField::create('FirstAccordionOpen', 'Make the first accordion opened')
 			)
@@ -132,6 +137,7 @@ class ComponentsPage extends Page
 					'Card Items',
 					$this->CardItems(),
 					GridFieldConfig_RecordEditor::create()
+						->addComponent(new GridFieldSortableRows('SortOrder'))
 				)
 			)
 		);
