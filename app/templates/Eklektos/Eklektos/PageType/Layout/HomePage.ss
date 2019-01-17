@@ -65,7 +65,9 @@
           <div class="card mb-4">
             <% if $Link %>
             <a href="$Link">
-              <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+              <div class="card-img-holder">
+                <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+              </div>
             </a>
             <% else %>
               <img class="card-img-top" src="$Image.Link" alt="Card image cap">

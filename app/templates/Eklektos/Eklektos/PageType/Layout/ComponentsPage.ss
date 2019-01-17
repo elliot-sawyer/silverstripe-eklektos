@@ -119,7 +119,9 @@
             <% loop $CardItems %>
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
                 <div class="card mb-4">
-                  <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+                  <div class="card-img-holder">
+                    <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+                  </div>
                   <div class="card-body">
                     <h4 class="card-title">$Title</h4>
                     <p class="card-text">$Content</p>
