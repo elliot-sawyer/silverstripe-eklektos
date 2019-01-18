@@ -24,6 +24,18 @@ class HomePage extends Page
 	 * @var string
 	 * @config
 	 */
+	private static $singular_name = 'Home Page';
+
+	/**
+	 * @var string
+	 * @config
+	 */
+	private static $plural_name = 'Home Pages';
+
+	/**
+	 * @var string
+	 * @config
+	 */
 	private static $table_name = 'HomePage';
 
 	/**

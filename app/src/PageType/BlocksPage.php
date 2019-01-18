@@ -27,7 +27,7 @@ class BlocksPage extends Page
 	 * @var string
 	 * @config
 	 */
-	private static $description = 'Generic page with blocks. Allows the use of content blocks.';
+	private static $description = 'A modular page composed of content blocks.';
 
 	/**
 	 * @var array

@@ -40,7 +40,8 @@ class CustomSiteConfig extends DataExtension
 		'SiteVimeo' => 'Text',
 		'SiteNavigation' => 'Varchar(255)',
 		'SiteCopyright' => 'Text',
-		'SiteColor' => 'Text'
+		'SiteColor' => 'Text',
+		'ShowDemoTogglePanel' => 'Boolean'
 	);
 
 	/**
@@ -195,6 +196,13 @@ class CustomSiteConfig extends DataExtension
 					'theme-brown' => '#6D4C41'
 				)
 			),
+		));
+
+		$fields->addFieldsToTab('Root.Main', array(
+			CheckboxField::create(
+				'ShowDemoTogglePanel',
+				'Show demo toggle panel'
+			)
 		));
 
 		$fields->addFieldsToTab('Root.SocialMedia', array(
