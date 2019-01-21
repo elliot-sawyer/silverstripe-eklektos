@@ -76,6 +76,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="gallery-image mb-5">
                     <div class="gallery-image-border">
+                      <div class="gallery-popup-holder">
                       <a class="gallery-popup" href="<% if $Image %>$Image.Link<% else %>http://placehold.it/800x600<% end_if %>" title="$Caption">
                         <% if $Image %>
                           $Image.Fit(800,600)
@@ -83,6 +84,7 @@
                           <img src="http://placehold.it/800x600" alt="Placeholder image" title="Placeholder image">
                         <% end_if %>
                       </a>
+                      </div>
                       <% if $Title || $Caption %>
                       <div class="gallery-image-description">
                         <h5 class="gallery-image-title">$Title</h5>

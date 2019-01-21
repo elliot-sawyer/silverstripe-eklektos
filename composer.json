@@ -1,7 +1,7 @@
 {
-    "name": "silverstripe/installer",
-    "type": "silverstripe-recipe",
-    "description": "The SilverStripe Framework Installer",
+    "name": "soulroll/silverstripe-eklektos",
+    "type": "components-library",
+    "description": "A set of commonly used components for SilverStripe to start projects faster",
     "require": {
         "php": ">=5.6.0",
         "silverstripe/recipe-plugin": "^1.2",
