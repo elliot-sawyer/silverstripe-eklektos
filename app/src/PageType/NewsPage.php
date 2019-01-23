@@ -15,7 +15,7 @@ class NewsPage extends DatedUpdatePage
 
     private static $can_be_root = false;
 
-    private static $icon = 'app/icons/home.png';
+    private static $icon = 'app/icons/news.png';
 
     private static $singular_name = 'News Page';
 
