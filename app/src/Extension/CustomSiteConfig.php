@@ -33,7 +33,6 @@ class CustomSiteConfig extends DataExtension
 		'AlertToggle' => 'Boolean',
 		'SiteFacebook' => 'Text',
 		'SiteTwitter' => 'Text',
-		'SiteGooglePlus' => 'Text',
 		'SiteLinkedin' => 'Text',
 		'SiteInstagram' => 'Text',
 		'SiteYoutube' => 'Text',
@@ -212,8 +211,6 @@ class CustomSiteConfig extends DataExtension
 				->setDescription('Twitter username (eg, http://twitter.com/<b>username</b>)'),
 			TextField::create('SiteLinkedin', 'Linked In')
 				->setDescription('e.g. https://www.linkedin.com/231451 where 231451 is your Linked In page'),
-			TextField::create('SiteGooglePlus', 'Google Plus')
-				->setDescription('e.g. https://plus.google.com/<b>username</b>'),
 			TextField::create('SiteInstagram', 'Instagram')
 				->setDescription('e.g. https://www.instagram.com/423561 where 423561 is your Instagram page'),
 			TextField::create('SiteYoutube', 'Youtube')
