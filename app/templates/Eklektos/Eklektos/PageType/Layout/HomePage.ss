@@ -4,7 +4,8 @@
       <% if $SiteConfig.AlertToggle %>
         <% with $SiteConfig %>
           <div class="alert alert-$AlertType alert-dismissible fade show" role="alert">
-            <strong>$AlertTitle</strong>
+            <span class="alert-title">$AlertTitle</span>
+            <% if $AlertBody %><span class="alert-body">$AlertBody</span><% end_if %>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
