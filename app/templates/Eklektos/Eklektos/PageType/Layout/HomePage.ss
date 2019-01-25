@@ -53,47 +53,48 @@
   </a>
   <% end_if %>
 </div>
+
 <div class="container mt-5 mb-5">
   <div class="row">
-    <% if $BlogPosts %>
+    <% if $ShowNewsOnHomePage %>
     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <% else %>
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <% end_if %>
       <div class="row">
-      <% loop $CardItems %>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="card mb-4">
-            <% if $Link %>
-            <a href="$Link">
-              <div class="card-img-holder">
-                <img class="card-img-top" src="$Image.Link" alt="Card image cap">
-              </div>
-            </a>
-            <% else %>
-              <img class="card-img-top" src="$Image.Link" alt="Card image cap">
-            <% end_if %>
-            <div class="card-body">
-              <h4 class="card-title">$Title</h4>
-              <p class="card-text">$Content</p>
+        <% loop $CardItems %>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card mb-4">
               <% if $Link %>
-                <a href="$Link" class="btn btn-card-theme">
-                <% if $LinkTitle %>
-                  $LinkTitle
-                <% else %>
-                  $InternalURL.title
-                <% end_if %>
-                </a>
+              <a href="$Link">
+                <div class="card-img-holder">
+                  <img class="card-img-top" src="$Image.Link" alt="Card image cap">
+                </div>
+              </a>
+              <% else %>
+                <img class="card-img-top" src="$Image.Link" alt="Card image cap">
               <% end_if %>
+              <div class="card-body">
+                <h4 class="card-title">$Title</h4>
+                <p class="card-text">$Content</p>
+                <% if $Link %>
+                  <a href="$Link" class="btn btn-card-theme">
+                  <% if $LinkTitle %>
+                    $LinkTitle
+                  <% else %>
+                    $InternalURL.title
+                  <% end_if %>
+                  </a>
+                <% end_if %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end_loop %>
+        <% end_loop %>
       </div>
     </div>
-    <% if $BlogPosts %>
+    <% if $ShowNewsOnHomePage %>
     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <h2 class="news-heading">News</h2>
+      <h2 class="news-heading">Latest News</h2>
       <% loop BlogPosts %>
         <div class="news-post">
           <a href="$Link"><h4 class="news-post-heading">$Title</h4></a>

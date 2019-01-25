@@ -9,7 +9,8 @@ use SilverStripe\Blog\Model\BlogPost;
 class HomePageController extends PageController
 {
 	public function BlogPosts() {
-		$posts = BlogPost::get();
+		$posts = BlogPost::get()
+			->limit(3);
 		return $posts;
 	}
 }

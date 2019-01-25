@@ -44,7 +44,8 @@ class HomePage extends Page
 	 */
 	private static $db = array(
 		'SliderArrows' => 'Boolean',
-		'SliderIndicators' => 'Boolean'
+		'SliderIndicators' => 'Boolean',
+		'ShowNewsOnHomePage' => 'Boolean'
 	);
 
 	/**
@@ -101,7 +102,8 @@ class HomePage extends Page
 					$this->CardItems(),
 					GridFieldConfig_RecordEditor::create()
 						->addComponent(new GridFieldSortableRows('SortOrder'))
-				)
+				),
+				CheckboxField::create('ShowNewsOnHomePage', 'Show news on home page next to cards')
 			)
 		);
 
