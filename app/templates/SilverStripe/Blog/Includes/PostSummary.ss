@@ -16,7 +16,7 @@
     <% else %>
       $Excerpt
     <% end_if %>
-    <a href="$Link">
+    <a href="$Link" class="post-summary-read-more">
       <%t SilverStripe\\Blog\\Model\\Blog.ReadMoreAbout "Read more about '{title}'..." title=$Title %>
     </a>
     <% include SilverStripe\\Blog\\EntryMeta %>
